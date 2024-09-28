@@ -22,7 +22,7 @@ public class UsersReader {
 						new LocalDateTypeAdapter())
 				.create();
 		List<User> users = null;
-		String path = "/media/Documentos/Fernando/ARQWEB1/WorkspaceEclipse/users.json";
+		String path = "C:\\bin2\\ARQWEB2\\users.json";
 		try {
 			File file = new File(path);
 			if(file.exists()) {

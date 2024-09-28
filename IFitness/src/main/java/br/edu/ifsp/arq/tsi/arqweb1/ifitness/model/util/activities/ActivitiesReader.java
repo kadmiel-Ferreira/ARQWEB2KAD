@@ -27,7 +27,7 @@ public class ActivitiesReader {
 						new LocalDateTypeAdapter())
 				.create();
 		List<Activity> activities = null;
-		String path = "/media/Documentos/Fernando/ARQWEB1/WorkspaceEclipse/activities.json";
+		String path = "C:\\bin2\\ARQWEB2\\activities.json";
 		
 		try {
 			File file = new File(path);

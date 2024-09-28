@@ -20,7 +20,7 @@ public class UsersWriter {
 						new LocalDateTypeAdapter())
 				.create();
 		List<User> users = UsersReader.read();
-		String path = "/media/Documentos/Fernando/ARQWEB1/WorkspaceEclipse/users.json";
+		String path = "C:\\bin2\\ARQWEB2\\users.json";
 		
 		if(users == null) {
 			// quando não tem nenhum objeto cadastrado

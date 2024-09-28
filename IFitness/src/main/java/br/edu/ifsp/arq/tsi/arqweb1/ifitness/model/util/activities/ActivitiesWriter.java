@@ -20,7 +20,7 @@ public class ActivitiesWriter {
 						new LocalDateTypeAdapter())
 				.create();
 		List<Activity> activities = ActivitiesReader.read();
-		String path = "/media/Documentos/Fernando/ARQWEB1/WorkspaceEclipse/activities.json";
+		String path = "C:\\bin2\\ARQWEB2\\activities.json";
 		
 		if(activities == null) {
 			// quando não tem nenhum objeto cadastrado
@@ -55,7 +55,7 @@ public class ActivitiesWriter {
 						new LocalDateTypeAdapter())
 				.create();
 		List<Activity> activities = ActivitiesReader.read();
-		String path = "/media/Documentos/Fernando/ARQWEB1/WorkspaceEclipse/activities.json";
+		String path = "C:\\bin2\\ARQWEB2\\activities.json";
 		
 		int index = 0;
 		for(Activity a: activities) {
@@ -86,7 +86,7 @@ public class ActivitiesWriter {
 						new LocalDateTypeAdapter())
 				.create();
 		List<Activity> activities = ActivitiesReader.read();
-		String path = "/media/Documentos/Fernando/ARQWEB1/WorkspaceEclipse/activities.json";
+		String path = "C:\\bin2\\ARQWEB2\\activities.json";
 		
 		activities.remove(activity);
 		
