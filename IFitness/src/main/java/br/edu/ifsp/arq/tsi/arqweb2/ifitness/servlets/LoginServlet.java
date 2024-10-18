@@ -27,21 +27,28 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
+		
+		String url;
+		
 		UserDao userDao = new UserDao(DataSourceSearcher.getInstance().getDataSource());
+		
 		Optional<User> optional = userDao.getUserByEmailAndPassword(email, password);
-		RequestDispatcher dispatcher = null;
 		if(optional.isPresent()) {
 			User user = optional.get();
 			HttpSession session = req.getSession();
 			session.setMaxInactiveInterval(600);
 			session.setAttribute("user", user);
-			dispatcher = req.getRequestDispatcher("/homeServlet");
+			url = "/homeServlet";
 		}else {
 			req.setAttribute("result", "loginError");
-			dispatcher = req.getRequestDispatcher("/login.jsp");
+			url = "/login.jsp";
 		}
-		
+		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
 		dispatcher.forward(req, resp);
 	}
 
 }
+
+
+
+
