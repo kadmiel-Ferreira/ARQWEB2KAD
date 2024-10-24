@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import br.edu.ifsp.arq.tsi.arqweb2.ifconect.dao.ClienteDAO;
 import br.edu.ifsp.arq.tsi.arqweb2.ifconect.model.Cliente;
+import br.edu.ifsp.arq.tsi.arqweb2.ifconect.model.Endereco;
 import br.edu.ifsp.arq.tsi.arqweb2.ifconect.utils.DataSourceSearcher;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -26,12 +27,24 @@ private static final long serialVersionUID = 1L;
 		String email = req.getParameter("email");
 		String telefone = req.getParameter("telefone");
 		String cpf = req.getParameter("cpf");  
+		String rua = req.getParameter("rua");
+		String cidade = req.getParameter("cidade"); 
+		String estado = req.getParameter("estado"); 
+		String cep = req.getParameter("cep"); 
 		
 		Cliente cliente = new Cliente();
 		cliente.setNome(name);
 		cliente.setEmail(email);
 		cliente.setTelefone(telefone);
 		cliente.setCpf(cpf);
+		Endereco endereco = new Endereco();
+		endereco.setRua(rua);
+		endereco.setCidade(cidade);
+		endereco.setEstado(estado);
+		endereco.setCep(cep);
+		
+		cliente.setEndereco(endereco);
+		
 		
 		
 		ClienteDAO clienteDao = new ClienteDAO(DataSourceSearcher.getInstance().getDataSource());

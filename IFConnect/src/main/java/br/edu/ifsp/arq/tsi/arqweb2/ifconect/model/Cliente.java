@@ -8,8 +8,16 @@ public class Cliente {
     private String email;
     private String telefone;
     private String cpf;
+    private Endereco endereco;
     
     
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -44,6 +52,18 @@ public class Cliente {
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(codigo, other.codigo);
 	}
  
 }

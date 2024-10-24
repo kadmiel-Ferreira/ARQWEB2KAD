@@ -7,7 +7,7 @@
 <html lang="pt-BR">
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">o
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
@@ -21,7 +21,9 @@
 <title>IFConnect - Página de Cadastro de Clientes</title>
 </head>
 <body>
+	
 	<div class="container">
+	<jsp:include page="navbar.jsp" />
 		<div class="col-lg-6 offset-lg-3 col-sm-12">
 			<c:if test="${result == 'notRegistered'}">
 				<div class="alert alert-danger alert-dismissible fade show"
@@ -48,9 +50,9 @@
 				</div>
 
 				<div class="mb-2">
-					<label for="telefone">Telefone*</label> <input type="number"
+					<label for="telefone">Telefone*</label> <input type="text"
 						name="telefone" id="telefone" class="form-control" minlength="6"
-						maxlength="12" required="required"> <span id="2"></span>
+						maxlength="15" required="required"> <span id="2"></span>
 				</div>
 
 				<div class="mb-2">
@@ -58,6 +60,31 @@
 						type="text" name="cpf" id="cpf"
 						class="form-control" required="required">
 					<span id="4"></span>
+				</div>
+				<div class="mb-2">
+					<fieldset>
+						<h2 class="text-center">Endereço</h2>
+
+						<!-- Rua -->
+						<label for="rua">Rua:</label><br> <input type="text" id="rua" class="form-control"
+							name="rua" required>
+						<br>
+
+						<!-- Cidade -->
+						<label for="cidade">Cidade:</label><br> <input type="text" class="form-control"
+							id="cidade" name="cidade" required>
+						<br>
+
+						<!-- Estado -->
+						<label for="estado">Estado:</label><br> <input type="text" class="form-control"
+							id="estado" name="estado" maxlength="2" required>
+						<br>
+
+						<!-- CEP -->
+						<label for="cep">CEP:</label><br> <input type="text" id="cep" class="form-control"
+							name="cep" required><br>
+						<br>
+					</fieldset>
 				</div>
 
 
