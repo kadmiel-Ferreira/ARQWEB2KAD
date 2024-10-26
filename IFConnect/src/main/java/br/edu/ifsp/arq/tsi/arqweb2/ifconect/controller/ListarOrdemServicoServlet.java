@@ -17,18 +17,40 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ListarOrdemServicoServlet extends HttpServlet {
 	
     private static final long serialVersionUID = 1L;
+    public ListarOrdemServicoServlet() {
+		super();
+	}
+    
+    @Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String url;
+		
+		try {
+		OrdemServicoDAO ordemServicoDAO = new OrdemServicoDAO(DataSourceSearcher.getInstance().getDataSource());
+		List<OrdemServico> ordens = ordemServicoDAO.listarOrdens();
+		req.setAttribute("ordens", ordens);
 
+		url = "/ordemservico.jsp";
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
+		dispatcher.forward(req, resp);
+		}catch (Exception e) {
+            e.printStackTrace();
+            throw new ServletException("Erro ao listar ordens de serviço", e);
+        }
+	}
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-        	System.out.println("TEEEEEEEEEESTEEEEEEEEEEEE2");
+        	
             OrdemServicoDAO ordemServicoDAO = new OrdemServicoDAO(DataSourceSearcher.getInstance().getDataSource());
             List<OrdemServico> ordens = ordemServicoDAO.listarOrdens();
 
             
             request.setAttribute("ordens", ordens);
 
-            System.out.println("TEEEEEEEEEESTEEEEEEEEEEE3");
+            
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listarOrdens.jsp");
             dispatcher.forward(request, response);
 

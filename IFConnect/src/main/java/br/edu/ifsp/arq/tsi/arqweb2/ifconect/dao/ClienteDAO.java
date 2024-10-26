@@ -30,25 +30,23 @@ public class ClienteDAO {
         this.dataSource = DataSourceSearcher.getInstance().getDataSource();
     }
 	
-	public Optional<Cliente> getUserByEmailAndCPF(String email, String cpf) {
+	public Optional<Cliente> getUserByEmailAndCPF(Integer id) {
 		
-		String sql = "select id,nome,email from cliente where email=? and cpf=?";
+		String sql = "select id,nome from cliente where id=?";
 		Optional<Cliente> optional = Optional.empty();
 		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, email);
-			ps.setString(2, cpf);
+			ps.setInt(1, id);
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
 					Cliente cliente = new Cliente();
 					cliente.setCodigo(rs.getInt(1));
 					cliente.setNome(rs.getString(2));
-					cliente.setEmail(rs.getString(3));
 					optional = Optional.of(cliente);
 				}
 			}
 			return optional;
 		} catch (SQLException sqlException) {
-			throw new RuntimeException("Erro durante a consulta no BD", sqlException);
+			throw new RuntimeException("Erro durante a consulta no BD2", sqlException);
 		}
 	}
 	

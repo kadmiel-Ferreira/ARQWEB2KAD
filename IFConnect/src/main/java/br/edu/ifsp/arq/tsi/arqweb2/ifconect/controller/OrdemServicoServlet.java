@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import br.edu.ifsp.arq.tsi.arqweb2.ifconect.dao.ClienteDAO;
 import br.edu.ifsp.arq.tsi.arqweb2.ifconect.dao.OrdemServicoDAO;
 import br.edu.ifsp.arq.tsi.arqweb2.ifconect.model.Cliente;
@@ -51,7 +53,7 @@ private static final long serialVersionUID = 1L;
 				dispatcher = req.getRequestDispatcher("/cliente.jsp");
 			}else {
 				req.setAttribute("result", "notRegistered");
-				dispatcher = req.getRequestDispatcher("user-register.jsp");
+				dispatcher = req.getRequestDispatcher("/cliente.jsp");
 			}
 			
 			dispatcher.forward(req, resp);
@@ -64,23 +66,56 @@ private static final long serialVersionUID = 1L;
 		
 	}
 	@Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-        	System.out.println("TEEEEEEEEEESTEEEEEEEEEEEE2");
-            ClienteDAO clienteDAO = new ClienteDAO(DataSourceSearcher.getInstance().getDataSource());
-            List<Cliente> clientes = clienteDAO.listarClientes();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+		//----------------------
+		try {
+			String action = request.getParameter("action");
+			if (action == null || action.equals("list")) {
+				RequestDispatcher dispatcher2 = null;
+				ClienteDAO clienteDAO = new ClienteDAO(DataSourceSearcher.getInstance().getDataSource());
+				List<Cliente> clientes = clienteDAO.listarClientes();
+	        	request.setAttribute("clientes", clientes);
 
-            
-            request.setAttribute("clientes", clientes);
-
-            System.out.println("TEEEEEEEEEESTEEEEEEEEEEE3");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/ordemServico.jsp");
-            dispatcher.forward(request, response);
-
-        } catch (Exception e) {
+	            
+	        	dispatcher2 = request.getRequestDispatcher("/ordemServico.jsp");
+	            dispatcher2.forward(request, response);
+			} else {
+				RequestDispatcher dispatcher = null;
+	        	Integer id = Integer.parseInt(request.getParameter("ordemServico-id"));
+	        	String url = null;
+	        	OrdemServicoDAO ordemServicoDAO = new OrdemServicoDAO(DataSourceSearcher.getInstance().getDataSource());
+	            
+	            OrdemServico ordemServico = ordemServicoDAO.getOrdemServicoById(id);
+	            
+	            
+	            if(ordemServico != null) {
+	            	if(action.equals("update")) {
+	            		request.setAttribute("ordemServico", ordemServico);
+	            		url = "/ordemServico.jsp";
+	            		dispatcher = request.getRequestDispatcher(url);
+	            		dispatcher.forward(request, response);
+	            	}
+	            	if(action.equals("remove")) {
+	    				Boolean resp = ordemServicoDAO.delete(ordemServico);
+	    				Gson gson = new Gson();
+	    				String json = gson.toJson(resp);
+	    				response.setContentType("application/json");
+	    				response.getWriter().write(json.toString());
+	    			}
+	            }else {
+	    			url = "/listarOrdens";
+	    			dispatcher = request.getRequestDispatcher(url);
+	    			dispatcher.forward(request, response);
+	    		}
+			}
+           } catch (Exception e) {
             e.printStackTrace();
             throw new ServletException("Erro ao listar ordens de serviço", e);
         }
-    }
-	
+
+	}
+
 }
