@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
-button {
+svg {
+	width: 30px;
+	height: 30px;
+}
+
+svg.action {
+	width: 25px;
+	height: 25px;
+}
+
+button, #link {
 	width: 100%;
+}
+
+#switchTheme {
+	width: 15%;
 }

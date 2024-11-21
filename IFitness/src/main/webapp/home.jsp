@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR" data-bs-theme="light">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Bootstrap CSS -->
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-		crossorigin="anonymous">
-	<link rel="stylesheet" href="css/home.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styles.css">
 	<title>IFitness - Página Principal</title>
 </head>
 <body>
@@ -75,16 +71,16 @@
 								<td>
 									<c:choose>
 										<c:when test="${activity.type == 'CORRIDA'}">
-											<img src="img/running_icon.png" alt="Corrida">
+											<jsp:include page="img/running_icon.jsp" />
 										</c:when>
 										<c:when test="${activity.type == 'CAMINHADA'}">
-											<img src="img/walking_icon.png" alt="Caminhada">
+											<jsp:include page="img/walking_icon.jsp" />
 										</c:when>
 										<c:when test="${activity.type == 'CICLISMO'}">
-											<img src="img/cycling_icon.png" alt="Ciclismo">
+											<jsp:include page="img/cycling_icon.jsp" />
 										</c:when>
 										<c:when test="${activity.type == 'NATACAO'}">
-											<img src="img/swimming_icon.png" alt="Natação">
+											<jsp:include page="img/swimming_icon.jsp" />
 										</c:when>
 									</c:choose>
 								
@@ -103,14 +99,14 @@
 								<td>
 									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
 										<a class="btn" href="activityRegister?action=update&activity-id=${activity.id}">
-	                						<img src="img/pencil-square.svg" alt="Editar">
+	                						<jsp:include page="img/pencil_icon.jsp" />
 	                					</a>
 									</span>
 									
            							<span data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
            								<a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" 
            								data-bs-id="${activity.id}">
-            								<img src="img/trash.svg" alt="Excluir">
+            								<jsp:include page="img/trash_icon.jsp" />
             							</a>
            							</span>
 								</td>
@@ -144,10 +140,8 @@
 	  	</div>
 	</div>
 	
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/home.js"></script>
+	<script type="text/javascript" src="js/theme.js"></script>
 </body>
 </html>

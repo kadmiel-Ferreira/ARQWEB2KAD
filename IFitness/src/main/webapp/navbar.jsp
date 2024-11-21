@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="homeServlet">IFitness</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -23,6 +23,9 @@
 						<li><a class="dropdown-item" href="logout">Sair</a></li>
 					</ul></li>
 			</ul>
+			<button id="switchTheme" class="btn btn-dark">Trocar Tema</button>
 		</div>
+		
 	</div>
+	
 </nav>

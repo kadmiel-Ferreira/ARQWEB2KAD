@@ -14,15 +14,15 @@
 				<li class="nav-item"><a class="nav-link" href="cliente.jsp">Cliente</a>
 				<li class="nav-item"><a class="nav-link" href="listarOrdens">Listar Ordens</a>
 				</li>
-<!-- 				<li class="nav-item dropdown"><a -->
-<!-- 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown" -->
-<!-- 					role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
-<%-- 						${sessionScope.user.name} </a> --%>
-<!-- 					<ul class="dropdown-menu"> -->
-<!-- 						<li><a class="dropdown-item" href="#">Minha Conta</a></li> -->
-<!-- 						<li><hr class="dropdown-divider"></li> -->
-<!-- 						<li><a class="dropdown-item" href="logout">Sair</a></li> -->
-<!-- 					</ul></li> -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						${sessionScope.user.name} </a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">Minha Conta</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="logout">Sair</a></li>
+					</ul></li>
 			</ul>
 		</div>
 	</div>

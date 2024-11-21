@@ -14,7 +14,7 @@
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/errors.css" rel="stylesheet">
 
-<title>IFitness - Página de Cadastro de Usuário</title>
+<title>IFConnect - Página de Cadastro de Usuário</title>
 </head>
 <body>
 	<div class="container">

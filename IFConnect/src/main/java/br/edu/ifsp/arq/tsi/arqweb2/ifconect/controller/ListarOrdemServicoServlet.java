@@ -30,7 +30,7 @@ public class ListarOrdemServicoServlet extends HttpServlet {
 		List<OrdemServico> ordens = ordemServicoDAO.listarOrdens();
 		req.setAttribute("ordens", ordens);
 
-		url = "/ordemservico.jsp";
+		url = "/ordemServico.jsp";
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
 		dispatcher.forward(req, resp);
