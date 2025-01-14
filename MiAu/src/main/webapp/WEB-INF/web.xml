@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>MiAu Dote</display-name>
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>AdicionarPessoa</param-name>
+    <param-value>Servlets.Helpers.AddUsuarioHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>login</param-name>
+    <param-value>Servlets.Helpers.LoginHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>saveAnimal</param-name>
+    <param-value>Servlets.Helpers.SaveAnimalHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>ListAnimal</param-name>
+    <param-value>Servlets.Helpers.ListAnimalHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>updateAnimal</param-name>
+    <param-value>Servlets.Helpers.UpdateAnimalHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>deleteAnimal</param-name>
+    <param-value>Servlets.Helpers.DeleteAnimalHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>logout</param-name>
+    <param-value>Servlets.Helpers.LogoutHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>ViewAnimalDetails</param-name>
+    <param-value>Servlets.Helpers.ViewAnimalDetailsHelper</param-value>
+  </context-param>
+  
+  
+</web-app>
