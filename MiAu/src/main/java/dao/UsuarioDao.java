@@ -57,7 +57,7 @@ public class UsuarioDao {
         public Optional<Usuario> getUserByEmailAndPassword(String email, String password) {
     		String passwordEncripted = EncriptadorDeSenha.encode(password);
     		
-    		String sql = "select id,nome,email from usuario where email=? and senha=?";
+    		String sql = "select id,nome,email, tipo_usuario from usuario where email=? and senha=?";
     		Optional<Usuario> optional = Optional.empty();
     		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
     			ps.setString(1, email);
@@ -68,6 +68,7 @@ public class UsuarioDao {
     					user.setId(rs.getLong(1));
     					user.setNome(rs.getString(2));
     					user.setEmail(rs.getString(3));
+    					user.setTipoUsuario(rs.getString(4));
     					optional = Optional.of(user);
     				}
     			}

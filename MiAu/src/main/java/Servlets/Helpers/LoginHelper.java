@@ -21,7 +21,7 @@ public class LoginHelper implements Helper {
 		if(optional.isPresent()) {
 			Usuario user = optional.get();
 			HttpSession session = req.getSession();
-			session.setMaxInactiveInterval(60);
+			session.setMaxInactiveInterval(6000);
 			session.setAttribute("user", user);
 			return "/index.jsp";
 		}else {

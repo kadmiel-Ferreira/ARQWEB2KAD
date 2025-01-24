@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+<%@ taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fnfn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -54,17 +57,7 @@
 												<i class="bi bi-eye-fill"></i>
 										</a>
 									</span>
-									<!-- Ação de editar --> <span data-bs-toggle="tooltip"
-									data-bs-placement="top" title="Editar"> <a class="btn"
-										href="ControllerServlet?action=updateAnimal&animal-id=${animal.id}">
-											<i class="bi bi-pencil-square"></i>
-									</a>
-								</span> <!-- Ação de excluir --> <span data-bs-toggle="tooltip"
-									data-bs-placement="top" title="Excluir"> <a class="btn" data-bs-toggle="modal" data-bs-target="#myModal"
-            								data-bs-id="${animal.id}">
-											<i class="bi bi-trash-fill"></i>
-									</a>
-								</span>
+									
 								
 								</td>
 							</tr>

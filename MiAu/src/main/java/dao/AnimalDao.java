@@ -1,19 +1,20 @@
 package dao;
 
-import model.Animal;
-import model.Especie;
-import model.Raca;
-import model.Sexo;
-import model.Status;
-import model.Usuario;
-
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
+
+import model.Animal;
+import model.Especie;
+import model.Raca;
+import model.Sexo;
+import model.Status;
+import model.Usuario;
 
 public class AnimalDao {
 
@@ -46,6 +47,69 @@ public class AnimalDao {
 		} catch (SQLException e) {
 			throw new RuntimeException("Erro ao listar animais", e);
 		}
+	}
+	
+	public List<Animal> getAnimalsByUser(Usuario user) {
+		String sql = "select * from animal where usuarioId=?";
+		List<Animal> animais = new ArrayList<>();
+		//String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status FROM animal a";
+		
+		try (Connection con = dataSource.getConnection();
+				PreparedStatement ps = con.prepareStatement(sql)){
+				ps.setLong(1, user.getId());
+			try (ResultSet rs = ps.executeQuery()){
+
+				while (rs.next()) {
+					Animal animal = new Animal();
+					animal.setId(rs.getLong("id"));
+					animal.setNome(rs.getString("nome"));
+					animal.setEspecie(Especie.valueOf(rs.getString("especie")));
+					animal.setRaca(Raca.valueOf(rs.getString("raca")));
+					animal.setSexo(Sexo.valueOf(rs.getString("sexo")));
+					animal.setStatus(Status.valueOf(rs.getString("status")));
+	
+					animais.add(animal);
+				}
+			}	
+			return animais;
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao listar animais", e);
+		}
+	}
+	
+	public Animal findById(Long id) {
+	    String sql = "select a.id, a.nome, a.especie, a.raca, a.idade, a.sexo, a.porte, a.castrado, a.status, a.descricao, u.telefone "
+	    		+ "from animal a "
+	    		+ "inner join usuario u on a.usuarioId = u.id WHERE a.id = ?";
+	    Animal animal = null;
+
+	    try (Connection conn = dataSource.getConnection(); 
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        // Define o parâmetro da consulta
+	        ps.setLong(1, id);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                animal = new Animal();
+	                animal.setId(rs.getLong("id"));
+	                animal.setNome(rs.getString("nome"));
+	                animal.setEspecie(Especie.valueOf(rs.getString("especie")));
+	                animal.setRaca(Raca.valueOf(rs.getString("raca")));
+	                animal.setIdade(rs.getInt("idade"));
+	                animal.setSexo(Sexo.valueOf(rs.getString("sexo")));
+	                animal.setPorte(model.Porte.valueOf(rs.getString("porte")));
+	                animal.setCastrado(rs.getBoolean("castrado"));
+	                animal.setStatus(Status.valueOf(rs.getString("status")));
+	                animal.setDescricao(rs.getString("descricao"));
+	                animal.setTelefone(rs.getString("telefone"));
+	            }
+	        }
+	    } catch (SQLException e) {
+	        throw new RuntimeException("Erro ao buscar o animal com ID: " + id, e);
+	    }
+
+	    return animal;
 	}
 
 	public Boolean salvar(Animal animal) throws Exception {
@@ -89,40 +153,7 @@ public class AnimalDao {
 		}
 	}
 
-	public Animal findById(Long id) {
-	    String sql = "select a.id, a.nome, a.especie, a.raca, a.idade, a.sexo, a.porte, a.castrado, a.status, a.descricao, u.telefone "
-	    		+ "from animal a "
-	    		+ "inner join usuario u on a.usuarioId = u.id WHERE a.id = ?";
-	    Animal animal = null;
-
-	    try (Connection conn = dataSource.getConnection(); 
-	         PreparedStatement ps = conn.prepareStatement(sql)) {
-
-	        // Define o parâmetro da consulta
-	        ps.setLong(1, id);
-
-	        try (ResultSet rs = ps.executeQuery()) {
-	            if (rs.next()) {
-	                animal = new Animal();
-	                animal.setId(rs.getLong("id"));
-	                animal.setNome(rs.getString("nome"));
-	                animal.setEspecie(Especie.valueOf(rs.getString("especie")));
-	                animal.setRaca(Raca.valueOf(rs.getString("raca")));
-	                animal.setIdade(rs.getInt("idade"));
-	                animal.setSexo(Sexo.valueOf(rs.getString("sexo")));
-	                animal.setPorte(model.Porte.valueOf(rs.getString("porte")));
-	                animal.setCastrado(rs.getBoolean("castrado"));
-	                animal.setStatus(Status.valueOf(rs.getString("status")));
-	                animal.setDescricao(rs.getString("descricao"));
-	                animal.setTelefone(rs.getString("telefone"));
-	            }
-	        }
-	    } catch (SQLException e) {
-	        throw new RuntimeException("Erro ao buscar o animal com ID: " + id, e);
-	    }
-
-	    return animal;
-	}
+	
 
 	public boolean update(Animal animal) {
 		String sql = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ?, sexo = ?, porte = ?, castrado = ?, status = ?, descricao = ? WHERE id = ?";

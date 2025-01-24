@@ -1,5 +1,5 @@
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-expand-lg">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="index.jsp">MiAudote</a>
@@ -11,8 +11,16 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link"
-					href="cadastrarAnimal.jsp">Cadastrar Animal</a></li>
+				
+				<c:choose>
+					<c:when test="${sessionScope.user.tipoUsuario == 'ONG'}">
+						<li class="nav-item">
+							<a class="nav-link" href="cadastrarAnimal.jsp">Cadastrar Animal</a>
+						</li>
+						<li class="nav-item"><a class="nav-link"
+						href="ControllerServlet?action=ListAnimalUsers">Animais Cadastrados</a></li>		
+					</c:when>
+				</c:choose>
 				<li class="nav-item"><a class="nav-link"
 					href="ControllerServlet?action=ListAnimal">Adote</a></li>
 				<li class="nav-item dropdown"><a
@@ -20,7 +28,8 @@
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						${sessionScope.user.nome} </a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Minha Conta</a></li>
+						<li><a class="dropdown-item" href="#">${sessionScope.user.tipoUsuario}</a></li>
+						
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item" href="ControllerServlet?action=logout">Sair</a></li>
 					</ul></li>

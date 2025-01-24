@@ -21,7 +21,9 @@
 <title>Página de Cadastro de Animais</title>
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
+	<c:choose>
+		<c:when test="${sessionScope.user.tipoUsuario == 'ONG'}">
+			<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<div class="col-lg-6 offset-lg-3 col-sm-12">
 
@@ -175,6 +177,12 @@
 			</form>
 		</div>
 	</div>
+		</c:when>
+		<c:when test="${sessionScope.user.tipoUsuario == 'ADOTANTE'}">
+			<p>Você não possui permissão para esse cadastro</p>
+		</c:when>
+	</c:choose>
+	
 
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script

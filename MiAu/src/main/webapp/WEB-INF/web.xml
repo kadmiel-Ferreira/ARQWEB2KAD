@@ -36,6 +36,10 @@
     <param-name>ViewAnimalDetails</param-name>
     <param-value>Servlets.Helpers.ViewAnimalDetailsHelper</param-value>
   </context-param>
+  <context-param>
+    <param-name>ListAnimalUsers</param-name>
+    <param-value>Servlets.Helpers.ListAnimalUsersHelper</param-value>
+  </context-param>
   
   
 </web-app>
