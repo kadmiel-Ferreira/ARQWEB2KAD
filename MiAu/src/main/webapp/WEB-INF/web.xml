@@ -40,6 +40,9 @@
     <param-name>ListAnimalUsers</param-name>
     <param-value>Servlets.Helpers.ListAnimalUsersHelper</param-value>
   </context-param>
-  
+  <context-param>
+    <param-name>animalStatisticsByType</param-name>
+    <param-value>Servlets.Helpers.AnimalStatisticsByTypeHelper</param-value>
+  </context-param>
   
 </web-app>

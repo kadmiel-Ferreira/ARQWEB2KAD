@@ -18,11 +18,15 @@
 							<a class="nav-link" href="cadastrarAnimal.jsp">Cadastrar Animal</a>
 						</li>
 						<li class="nav-item"><a class="nav-link"
-						href="ControllerServlet?action=ListAnimalUsers">Animais Cadastrados</a></li>		
+						href="ControllerServlet?action=ListAnimalUsers">Animais Cadastrados</a></li>
+							
 					</c:when>
 				</c:choose>
 				<li class="nav-item"><a class="nav-link"
 					href="ControllerServlet?action=ListAnimal">Adote</a></li>
+				<li class="nav-item">
+			          <a class="nav-link" href="statistics.jsp">Estatísticas</a>
+			        </li>	
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import dto.AnimalByType;
 import model.Animal;
 import model.Especie;
 import model.Raca;
@@ -177,7 +178,30 @@ public class AnimalDao {
 		}
 
 	}
-
+	
+	
+	
+		public List<AnimalByType> getAnimaisStatisticByType(Usuario user){
+			String sql = "select raca, count(*) as animais_count from animal where usuarioId=? group by raca";
+			List<AnimalByType> animais = new ArrayList();
+			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)){
+				ps.setLong(1, user.getId());
+				try (ResultSet rs = ps.executeQuery()){
+					while (rs.next()) {
+						AnimalByType animalByType = new AnimalByType();
+						animalByType.setType(Raca.valueOf(rs.getString(1)).getDescription());
+						animalByType.setCount(rs.getInt(2));
+						animais.add(animalByType);
+						
+					}
+				}
+				return animais;
+			}catch (SQLException sqlException) {
+				throw new RuntimeException("Erro durante a consulta", sqlException);
+			}
+				
+		}
+	
 	/*
 	 * private void preencherPreparedStatementAnimal(PreparedStatement ps, String
 	 * nome, String genero, Status status) throws SQLException { ps.setString(1,
