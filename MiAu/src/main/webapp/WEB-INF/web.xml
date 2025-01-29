@@ -44,5 +44,9 @@
     <param-name>animalStatisticsByType</param-name>
     <param-value>Servlets.Helpers.AnimalStatisticsByTypeHelper</param-value>
   </context-param>
+  <context-param>
+    <param-name>searchEspecies</param-name>
+    <param-value>Servlets.Helpers.SearchForEspecieHelper</param-value>
+  </context-param>
   
 </web-app>

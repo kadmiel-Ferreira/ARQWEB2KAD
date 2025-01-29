@@ -16,6 +16,7 @@ import model.Raca;
 import model.Sexo;
 import model.Status;
 import model.Usuario;
+import model.filters.EspecieFilter;
 
 public class AnimalDao {
 
@@ -27,7 +28,7 @@ public class AnimalDao {
 
 	public List<Animal> listAnimal() {
 		List<Animal> animais = new ArrayList<>();
-		String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status FROM animal a";
+		String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status FROM animal a where a.status = 'DISPONIVEL'";
 
 		try (Connection con = dataSource.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -200,6 +201,52 @@ public class AnimalDao {
 				throw new RuntimeException("Erro durante a consulta", sqlException);
 			}
 				
+		}
+		
+		public List<Animal> getEspecieByFilter(EspecieFilter filter) throws SQLException {
+			StringBuilder sql = new StringBuilder("select * from animal where status = 'DISPONIVEL'");
+			List<Object> params = new ArrayList<>();
+			
+			if(filter.getEspecie() != null) {
+				sql.append(" and especie=?");
+				params.add(filter.getEspecie().getDescription().toString());
+			}
+			return getEspecieList(sql.toString(), params);
+		}
+		
+		private List<Animal> getEspecieList(String sql, List<Object> params) throws SQLException {
+			List<Animal> animais = new ArrayList<>();
+			try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+				
+				for (int i = 0; i < params.size(); i++) {
+					ps.setObject(i + 1, params.get(i));
+				}
+				System.out.println("SQL Gerado: " + sql.toString());
+    			System.out.println("Parâmetros: " + params);
+    			System.out.println(animais);
+				try(ResultSet rs = ps.executeQuery()) {
+					
+					while (rs.next()) {
+						Animal animal = new Animal();
+						animal.setId(rs.getLong("id"));
+		                animal.setNome(rs.getString("nome"));
+		                animal.setEspecie(Especie.valueOf(rs.getString("especie")));
+		                animal.setRaca(Raca.valueOf(rs.getString("raca")));
+		                animal.setIdade(rs.getInt("idade"));
+		                animal.setSexo(Sexo.valueOf(rs.getString("sexo")));
+		                animal.setPorte(model.Porte.valueOf(rs.getString("porte")));
+		                animal.setCastrado(rs.getBoolean("castrado"));
+		                animal.setStatus(Status.valueOf(rs.getString("status")));
+		                animal.setDescricao(rs.getString("descricao"));
+		                animais.add(animal);
+		                
+					}
+				}catch (SQLException sqlException) {
+					throw new RuntimeException("Erro durante a consulta", sqlException);
+				}
+			}	
+			
+			return animais;
 		}
 	
 	/*

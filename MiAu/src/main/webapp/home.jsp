@@ -22,7 +22,27 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div class="container mt-5">
+		<form action="ControllerServlet" method="post">
+				<div class="row">
+					<div class="col-12 col-lg-3">
+					  	<div class="mb-2">
+							<label for="type">Especie</label> 
+							<select class="form-select"
+								name="especie" id="especie">
+								<option value="" selected>Selecione</option>
+								<option value="CACHORRO">Cachorro</option>
+								<option value="GATO">Gato</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-lg-3 mt-4">
+						<button type="submit" class="btn btn-primary" name="action" value="searchEspecies">Filtrar</button>
+					</div>  
+				</div>
+			</form>
 		
+		
+		<c:out value="Tamanho da lista: ${fn:length(listaDeAnimais)}" />
 		<c:choose>
 			<c:when test="${fn:length(listaDeAnimais) > 0}">
 				<table class="table table-striped table-hover table-responsive">
