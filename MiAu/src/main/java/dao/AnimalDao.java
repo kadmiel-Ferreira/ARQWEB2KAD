@@ -28,7 +28,8 @@ public class AnimalDao {
 
 	public List<Animal> listAnimal() {
 		List<Animal> animais = new ArrayList<>();
-		String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status FROM animal a where a.status = 'DISPONIVEL'";
+		String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status, a.imagem FROM animal a WHERE a.status = 'DISPONIVEL'";
+
 
 		try (Connection con = dataSource.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -42,6 +43,8 @@ public class AnimalDao {
 				animal.setRaca(Raca.valueOf(rs.getString("raca")));
 				animal.setSexo(Sexo.valueOf(rs.getString("sexo")));
 				animal.setStatus(Status.valueOf(rs.getString("status")));
+				animal.setImagem(rs.getString("imagem"));
+
 
 				animais.add(animal);
 			}
@@ -80,7 +83,7 @@ public class AnimalDao {
 	}
 	
 	public Animal findById(Long id) {
-	    String sql = "select a.id, a.nome, a.especie, a.raca, a.idade, a.sexo, a.porte, a.castrado, a.status, a.descricao, u.telefone "
+	    String sql = "select a.id, a.nome, a.especie, a.raca, a.idade, a.sexo, a.porte, a.castrado, a.status, a.descricao, a.imagem, u.telefone "
 	    		+ "from animal a "
 	    		+ "inner join usuario u on a.usuarioId = u.id WHERE a.id = ?";
 	    Animal animal = null;
@@ -105,6 +108,7 @@ public class AnimalDao {
 	                animal.setStatus(Status.valueOf(rs.getString("status")));
 	                animal.setDescricao(rs.getString("descricao"));
 	                animal.setTelefone(rs.getString("telefone"));
+	                animal.setImagem(rs.getString("imagem"));
 	            }
 	        }
 	    } catch (SQLException e) {
@@ -115,32 +119,27 @@ public class AnimalDao {
 	}
 
 	public Boolean salvar(Animal animal) throws Exception {
-		// SQL para inserir os dados do usuário
-		String sql = "INSERT INTO animal (usuarioId, nome, especie, raca, idade, sexo, porte, castrado, status, descricao) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	    String sql = "INSERT INTO animal (usuarioId, nome, especie, raca, idade, sexo, porte, castrado, status, descricao, imagem) "
+	               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		// Conexão com o banco
-		try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+	    try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+	        ps.setLong(1, animal.getUserId());
+	        ps.setString(2, animal.getNome());
+	        ps.setString(3, animal.getEspecie().name());
+	        ps.setString(4, animal.getRaca().name());
+	        ps.setInt(5, animal.getIdade());
+	        ps.setString(6, animal.getSexo().name());
+	        ps.setString(7, animal.getPorte().name());
+	        ps.setBoolean(8, animal.isCastrado());
+	        ps.setString(9, animal.getStatus().name());
+	        ps.setString(10, animal.getDescricao());
+	        ps.setString(11, animal.getImagem()); // Salvar o caminho da imagem no banco
 
-			// Setando os valores no SQL
-			ps.setLong(1, animal.getUserId());
-			ps.setString(2, animal.getNome());
-			ps.setString(3, animal.getEspecie().name());
-			ps.setString(4, animal.getRaca().name());
-			ps.setInt(5, animal.getIdade());
-			ps.setString(6, animal.getSexo().name());
-			ps.setString(7, animal.getPorte().name());
-			ps.setBoolean(8, animal.isCastrado());
-			ps.setString(9, animal.getStatus().name());
-			ps.setString(10, animal.getDescricao());
-			
-			
-			// Executa a inserção
-			ps.executeUpdate();
-			return true;
-		} catch (SQLException e) {
-			throw new RuntimeException("Erro durante a escrita no BD", e);
-		}
+	        ps.executeUpdate();
+	        return true;
+	    } catch (SQLException e) {
+	        throw new RuntimeException("Erro durante a escrita no BD", e);
+	    }
 	}
 
 	public boolean delete(Animal animal) {
@@ -158,7 +157,7 @@ public class AnimalDao {
 	
 
 	public boolean update(Animal animal) {
-		String sql = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ?, sexo = ?, porte = ?, castrado = ?, status = ?, descricao = ? WHERE id = ?";
+		String sql = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ?, sexo = ?, porte = ?, castrado = ?, status = ?, descricao = ?, imagem = ? WHERE id = ?";
 
 		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 				 ps.setString(1, animal.getNome());
@@ -170,7 +169,8 @@ public class AnimalDao {
 		        ps.setBoolean(7, animal.isCastrado());
 		        ps.setString(8, animal.getStatus().name());
 		        ps.setString(9, animal.getDescricao());
-		        ps.setLong(10, animal.getId());
+		        ps.setString(10, animal.getImagem());
+		        ps.setLong(11, animal.getId());
 				ps.executeUpdate();
 				return true;
 

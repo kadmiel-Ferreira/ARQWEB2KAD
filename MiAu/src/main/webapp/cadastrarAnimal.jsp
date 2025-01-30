@@ -27,7 +27,7 @@
 	<div class="container">
 		<div class="col-lg-6 offset-lg-3 col-sm-12">
 
-			<form action="ControllerServlet" method="post" id="form1">
+			<form action="ControllerServlet" method="post" id="form1" enctype="multipart/form-data">
 				<c:choose>
 					<c:when test="${animal == null}">
 						<h1 class="text-center">Novo Animal</h1>
@@ -169,6 +169,12 @@
 					<textarea id="descricao" name="descricao" class="form-control"
 						required>${animal != null ? animal.descricao : ''}</textarea>
 				</div>
+				
+				<div class="mb-2">
+					<label for="imagem">Imagem*</label> <input type="file"
+						name="imagem" id="imagem" class="form-control"
+						value="${animal != null ? animal.imagem : ''}">
+				</div>
 
 				<div class="mb-2">
 					<button type="submit" name="action" value="saveAnimal"
@@ -194,7 +200,6 @@
 
 </body>
 </html>
-
 
 
 

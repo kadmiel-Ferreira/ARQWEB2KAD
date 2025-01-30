@@ -19,9 +19,8 @@ public class Animal implements Serializable {
 	private String descricao;
 	private Long userId;
 	private String telefone;
+	private String imagem;
 
-
-	
 
 	public Long getId() {
 		return id;
@@ -117,6 +116,14 @@ public class Animal implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 	
 	@Override

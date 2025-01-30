@@ -54,6 +54,7 @@
 							<th>Raça</th>
 							<th>Sexo</th>
 							<th>Status</th>
+							<th>Imagem</th>
 							<th>Ações</th>
 						</tr>
 					</thead>
@@ -70,6 +71,11 @@
 										<c:when test="${animal.status == 'ADOTADO'}">Adotado</c:when>
 										<c:otherwise>Indefinido</c:otherwise>
 									</c:choose></td>
+								<td>
+								    <c:if test="${not empty animal.imagem}">
+								        <img src="${animal.imagem}" alt="Imagem de ${animal.nome}" width="100">
+								    </c:if>
+								</td>
 								<td>
 									<span data-bs-toggle="tooltip"
 										data-bs-placement="top" title="ViewAnimalDetails"> <a class="btn"

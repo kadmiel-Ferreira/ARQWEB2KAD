@@ -31,8 +31,10 @@
 				
 				<div class="card mb-3" style="max-width: 540px;">
 				  <div class="row g-0">
-				    <div class="col-md-4">
-				      <img src="..." class="img-fluid rounded-start" alt="...">
+				    <div class="col-md-4">				      
+					    <c:if test="${not empty animal.imagem}">
+					        <img src="${animal.imagem}" alt="Imagem de ${animal.nome}" width="100">
+					    </c:if>								
 				    </div>
 				    <div class="col-md-8">
 				      <div class="card-body">
