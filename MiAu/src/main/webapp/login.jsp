@@ -117,20 +117,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.querySelector('.toggle-password').addEventListener('click', function() {
-            let passwordInput = document.getElementById('password');
-            let icon = this.querySelector('i');
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.classList.replace("fa-eye", "fa-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                icon.classList.replace("fa-eye-slash", "fa-eye");
-            }
-        });
-    </script>
-
+    <script type="text/javascript" src="js/cookies.js"></script>
+    <script type="text/javascript" src="js/mostrarSenha.js"></script>
   </body>
 </html>

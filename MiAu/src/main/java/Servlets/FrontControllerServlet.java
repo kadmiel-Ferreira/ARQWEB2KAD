@@ -34,10 +34,11 @@ public class FrontControllerServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         String action = req.getParameter("action");
 
+        // Permite acesso à listagem de animais para adoção sem login
         if ((session == null || session.getAttribute("user") == null) &&
-            (action == null || (!action.equals("login") && !action.equals("AdicionarPessoa")))) {
+            (action == null || (!action.equals("login") && !action.equals("AdicionarPessoa") && !action.equals("ListAnimal")))) {
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
-            return; // Evita continuar a execução
+            return; 
         } else {
             Helper helper = new HelperFactory().getHelper(req);
             try {

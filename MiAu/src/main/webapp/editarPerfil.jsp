@@ -11,9 +11,11 @@
 <script type="text/javascript" src="js/CPFouCNPJ.js" defer></script>
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="css/styles.css" rel="stylesheet">
-<link href="css/errors.css" rel="stylesheet">
-
+<style>
+.toggle-password {
+	cursor: pointer;
+}
+</style>
 <title>Editar Usuário</title>
 </head>
 <body>
@@ -33,32 +35,35 @@
 				<h1 class="text-center">Editar Usuário</h1>
 						
 				<div class="mb-2">
-					<label for="nome">Nome completo*</label> <input type="text"
+					<label for="nome">Nome completo</label> <input type="text"
 						name="nome" id="nome" class="form-control" minlength="3"
 						maxlength="50" required="required" value="${sessionScope.user.nome}"> <span id="0"></span>
 				</div>
 
 				<div class="mb-2">
-					<label for="email">E-mail*</label> <input type="email" name="email"
+					<label for="email">E-mail</label> <input type="email" name="email"
 						id="email" class="form-control" required="required" value="${sessionScope.user.email}"> <span
 						id="1"></span>
 				</div>
 
 				<div class="mb-2">
-					<label for="password">Senha*</label> <input type="password"
+					<label for="password">Senha</label> <input type="password"
 						name="password" id="password" class="form-control" minlength="6"
 						maxlength="12" required="required" > <span id="2"></span>
+						<span class="input-group-text toggle-password">
+                    	<i class="fa-solid fa-eye"></i>
+                </span>
 				</div>
 
 				<div class="mb-2">
-					<label for="confirmPassword">Confirmação de Senha*</label> <input
+					<label for="confirmPassword">Confirmação de Senha</label> <input
 						type="password" name="confirmPassword" id="confirmPassword"
 						class="form-control" minlength="6" maxlength="12"
 						required="required"> <span id="3"></span>
 				</div>
 
 				<div class="mb-2">
-					<label for="telefone">Telefone*</label> <input
+					<label for="telefone">Telefone</label> <input
 						type="text" name="telefone" id="telefone"
 						class="form-control" required="required" value="${sessionScope.user.telefone}">
 					<span id="4"></span>
@@ -111,26 +116,26 @@
 	</div>
 
 	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/buscaCep.js"></script>
 	<script type="text/javascript" src="js/theme.js"></script>
+	<script type="text/javascript" src="js/mostrarSenha.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
 	
 	<script>
-        $(document).ready(function () {
-            // Aplicando máscara ao telefone
-            $('#telefone').inputmask('(99) 99999-9999');
+	  $(document).ready(function () {
+        console.log("jQuery carregado, aplicando máscaras...");
+        
+        // Aplicando máscara ao telefone
+        $('#telefone').inputmask('(99) 99999-9999');
 
-            // Aplicando máscara ao CEP
-            $('#cep').inputmask('99999-999');
-
-            
-           
-                
-        });
-    </script>
-	
+        // Aplicando máscara ao CEP
+        $('#cep').inputmask('99999-999');
+    });
+	  </script>
 </body>
 </html>

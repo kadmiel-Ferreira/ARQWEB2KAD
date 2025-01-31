@@ -105,14 +105,7 @@
                     
                     <p class="info"><i class="fa-solid fa-envelope"></i><span></span> Email: ${sessionScope.user.email}</p>
 
-                    <c:choose>
-                        <c:when test="${sessionScope.user.tipoUsuario == 'ONG'}">
-                            <p class="info"><i class="fa-solid fa-paw"></i> Animais para adoção: <strong>5</strong></p>
-                        </c:when>
-                        <c:when test="${sessionScope.user.tipoUsuario == 'ADOTANTE'}">
-                            <p class="info"><i class="fa-solid fa-heart"></i> Animais adotados: <strong>2</strong></p>
-                        </c:when>
-                    </c:choose>
+                    
 
                     <a href="editarPerfil.jsp" class="btn btn-primary btn-custom mt-3">
                         <i class="fa-solid fa-user-pen"></i> Editar Perfil
