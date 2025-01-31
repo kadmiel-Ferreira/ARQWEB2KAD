@@ -1,13 +1,20 @@
 package Servlets.Helpers;
 
+import java.io.File;
+
 import dao.AnimalDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
-import model.*;
+import model.Animal;
+import model.Especie;
+import model.Porte;
+import model.Raca;
+import model.Sexo;
+import model.Status;
+import model.Usuario;
 import utils.DataSourceSearcher;
-import java.io.File;
 
 
 public class SaveAnimalHelper implements Helper {
@@ -22,7 +29,17 @@ public class SaveAnimalHelper implements Helper {
         Long id = Long.parseLong(req.getParameter("id"));
         String nome = req.getParameter("nome");
         Especie especie = Especie.valueOf(req.getParameter("especie").toUpperCase());
-        Raca raca = Raca.valueOf(req.getParameter("raca").toUpperCase());
+        String racaCaesParam = req.getParameter("racaCaes");
+        String racaGatosParam = req.getParameter("racaGatos");
+        Raca racaCaes = null;
+        Raca racaGatos = null;
+        if (racaCaesParam != null && !racaCaesParam.isEmpty()) {
+            racaCaes = Raca.valueOf(racaCaesParam.toUpperCase());
+        }
+        if (racaGatosParam != null && !racaGatosParam.isEmpty()) {
+            racaGatos = Raca.valueOf(racaGatosParam.toUpperCase());
+        }
+        Raca raca = (racaCaes != null) ? racaCaes : racaGatos;
         int idade = Integer.parseInt(req.getParameter("idade"));
         Sexo sexo = Sexo.valueOf(req.getParameter("sexo").toUpperCase());
         Porte porte = Porte.valueOf(req.getParameter("porte").toUpperCase());
@@ -50,7 +67,7 @@ public class SaveAnimalHelper implements Helper {
         String imagePath = animal.getImagem(); // Mantém a imagem antiga por padrão
 
         if (fileName != null && !fileName.isEmpty()) {
-            String uploadPath = "C:\\Users\\Faculdade\\git\\ARQWEB2KAD\\MiAu\\src\\main\\webapp\\uploads";
+            String uploadPath = "C:\\Users\\kferreira\\Downloads\\ARQWEB2KAD-master\\MiAu\\src\\main\\webapp\\uploads";
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();

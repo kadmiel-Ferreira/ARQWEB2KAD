@@ -32,9 +32,12 @@ public class FrontControllerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
-        if ((session == null || session.getAttribute("user") == null) && 
-            (req.getParameter("action") == null || !req.getParameter("action").equals("login"))) {
+        String action = req.getParameter("action");
+
+        if ((session == null || session.getAttribute("user") == null) &&
+            (action == null || (!action.equals("login") && !action.equals("AdicionarPessoa")))) {
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            return; // Evita continuar a execução
         } else {
             Helper helper = new HelperFactory().getHelper(req);
             try {

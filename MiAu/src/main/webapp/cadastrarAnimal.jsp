@@ -8,7 +8,7 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<script type="text/javascript" src="js/CachorroOuGato.js" defer></script>
 <!-- Bootstrap CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -65,9 +65,9 @@
 				</div>
 
 				<!-- Campo Raça -->
-				<div class="mb-2">
-					<label for="raca">Raça*</label> <select id="raca" name="raca"
-						class="form-control" required>
+				<div class="mb-2" id="racaCaes">
+					<label for="raca">Raça*</label> <select id="raca" name="racaCaes"
+						class="form-control" >
 						<option value=""
 							${animal == null || animal.raca == '' ? 'selected' : ''}>Selecione</option>
 						<option value="LABRADOR"
@@ -105,7 +105,23 @@
 							Raça Definida</option>
 					</select>
 				</div>
-
+				<div class="mb-2" id="racaGatos">
+					<label for="raca">Raça*</label> 
+					<select id="raca" name="racaGatos" class="form-control">
+					    <option value="" ${animal == null || animal.raca == '' ? 'selected' : ''}>Selecione</option>
+					    <option value="PERSA" ${animal != null && animal.raca == 'PERSA' ? 'selected' : ''}>Persa</option>
+					    <option value="SIAMES" ${animal != null && animal.raca == 'SIAMES' ? 'selected' : ''}>Siamês</option>
+					    <option value="MAINE_COON" ${animal != null && animal.raca == 'MAINE_COON' ? 'selected' : ''}>Maine Coon</option>
+					    <option value="SPHYNX" ${animal != null && animal.raca == 'SPHYNX' ? 'selected' : ''}>Sphynx</option>
+					    <option value="BENGAL" ${animal != null && animal.raca == 'BENGAL' ? 'selected' : ''}>Bengal</option>
+					    <option value="RAGDOLL" ${animal != null && animal.raca == 'RAGDOLL' ? 'selected' : ''}>Ragdoll</option>
+					    <option value="BRITISH_SHORTHAIR" ${animal != null && animal.raca == 'BRITISH_SHORTHAIR' ? 'selected' : ''}>British Shorthair</option>
+					    <option value="SCOTTISH_FOLD" ${animal != null && animal.raca == 'SCOTTISH_FOLD' ? 'selected' : ''}>Scottish Fold</option>
+					    <option value="ABISSINIO" ${animal != null && animal.raca == 'ABISSINIO' ? 'selected' : ''}>Abissínio</option>
+					    <option value="BIRMANES" ${animal != null && animal.raca == 'BIRMANES' ? 'selected' : ''}>Birmanês</option>
+					    <option value="SRD" ${animal != null && animal.raca == 'SRD' ? 'selected' : ''}>Sem Raça Definida</option>
+					</select>
+				</div>
 
 				<!-- Idade -->
 				<div class="mb-2">

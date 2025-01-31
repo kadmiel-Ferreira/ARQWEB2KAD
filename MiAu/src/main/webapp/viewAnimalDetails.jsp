@@ -3,66 +3,83 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
-<html lang="pt-BR" data-bs-theme="light">
+<html lang="pt-BR">
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-	crossorigin="anonymous">
-<link href="css/styles.css" rel="stylesheet">
-<link href="css/errors.css" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+    body {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .container {
+        flex-grow: 1;
+    }
+    .animal-card {
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        background: #fff;
+    }
+    .animal-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+    }
+    .details-list p {
+        margin-bottom: 8px;
+        font-size: 18px;
+    }
+    .btn-adopt {
+        font-size: 20px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+</style>
 <title>Página de Cadastro de Animais</title>
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
-	<div class="container">
-		<div class="col-lg-6 offset-lg-3 col-sm-12">
-
-			<form action="ControllerServlet" method="post" id="form1">
-				
-				<h1 class="text-center">Detalhes do Animal</h1>
-				
-				<div class="card mb-3" style="max-width: 540px;">
-				  <div class="row g-0">
-				    <div class="col-md-4">				      
-					    <c:if test="${not empty animal.imagem}">
-					        <img src="${animal.imagem}" alt="Imagem de ${animal.nome}" width="100">
-					    </c:if>								
-				    </div>
-				    <div class="col-md-8">
-				      <div class="card-body">
-				        <h5 class="card-title">${animal != null ? animal.nome : ''}</h5>
-				        <p class="card-text">${animal != null ? animal.descricao : ''}</p>
-				        <p class="card-text">${animal != null ? animal.especie : ''}</p>
-				        <p class="card-text">${animal != null ? animal.raca : ''}</p>
-				        <p class="card-text">${animal != null ? animal.idade : ''}</p>
-				        <p class="card-text">${animal != null ? animal.sexo : ''}</p>
-				        <p class="card-text">${animal != null ? animal.porte : ''}</p>
-				       <p class="card-text">
-							<c:if test="${not empty animal}">
-       							 ${animal.castrado ? 'Castrado' : 'Não Castrado'}
-    						</c:if>
-						</p> 
-				        
-				        
-				        <p class="card-text"><small class="text-muted">${animal != null ? animal.status : ''}</small></p>
-				        <a href="https://api.whatsapp.com/send?phone=${animal.telefone}" class="btn btn-success" target="_blank">Quero Adotar Esse Animal</a>
-				        
-				      </div>
-				    </div>
-				  </div>
-				</div>
-
-			</form>
-		</div>
-	</div>
+    <jsp:include page="navbar.jsp" />
+    
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card animal-card bg-dark">
+                    <c:if test="${not empty animal.imagem}">
+                        <img src="${animal.imagem}" class="animal-img" alt="Imagem de ${animal.nome}">
+                    </c:if>
+                    <div class="card-body text-center">
+                        <h2 class="text-primary">${animal.nome}</h2>
+                        <p class="text-muted">${animal.descricao}</p>
+                        
+                        <div class="details-list text-start mt-4">
+                            <p><i class="fas fa-paw"></i> <strong>Espécie:</strong> ${animal.especie}</p>
+                            <p><i class="fas fa-dna"></i> <strong>Raça:</strong> ${animal.raca}</p>
+                            <p><i class="fas fa-birthday-cake"></i> <strong>Idade:</strong> ${animal.idade} anos</p>
+                            <p><i class="fas fa-venus-mars"></i> <strong>Sexo:</strong> ${animal.sexo}</p>
+                            <p><i class="fas fa-ruler-combined"></i> <strong>Porte:</strong> ${animal.porte}</p>
+                            <p><i class="fas fa-check-circle"></i> <strong>Castrado:</strong> ${animal.castrado ? 'Sim' : 'Não'}</p>
+                            <p><i class="fas fa-tag"></i> <strong>Status:</strong> <span class="badge ${animal.status == 'DISPONIVEL' ? 'bg-success' : 'bg-secondary'}">${animal.status}</span></p>
+                        </div>
+                        
+                        <a href="https://api.whatsapp.com/send?phone=${animal.telefone}" class="btn btn-success btn-adopt w-100 mt-3" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Quero Adotar Esse Animal
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script
