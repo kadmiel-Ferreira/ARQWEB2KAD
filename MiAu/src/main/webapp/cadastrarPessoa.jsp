@@ -33,17 +33,46 @@
         .form-control {
             margin-bottom: 10px;
         }
+		.btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+        }
 
-        .input-group-text {
-            cursor: pointer;
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
         }
 
         .alert {
             margin-top: 15px;
         }
+        
+        .input-group {
+            position: relative;
+        }
+
+        .input-group .form-control {
+            padding-right: 40px;
+        }
+
+        /* Estilo para o botão de visualização da senha */
+        .input-group-text {
+            position: absolute;
+            top: 40%;
+            right: 5px;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        
     </style>
 
-    <title>Página de Cadastro de Usuário</title>
+    <title>Cadastre-se</title>
 </head>
 <body>
     <jsp:include page="navbar.jsp" />
@@ -69,7 +98,7 @@
                     </select>
                 </div>
 
-                <!-- Nome e E-mail lado a lado -->
+                
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nome">Nome completo</label>
@@ -81,7 +110,7 @@
                     </div>
                 </div>
 
-                <!-- Senha e Confirmação de Senha lado a lado -->
+                
                <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="password">Senha</label>
@@ -96,7 +125,7 @@
                     </div>
                 </div>
 
-                <!-- Telefone lado a lado com o CPF ou CNPJ -->
+                
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="telefone">Telefone</label>

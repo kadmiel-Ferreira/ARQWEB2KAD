@@ -1,6 +1,5 @@
 package Servlets.Helpers;
 
-
 import dao.UsuarioDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,24 +7,25 @@ import model.Usuario;
 import utils.DataSourceSearcher;
 import utils.EncriptadorDeSenha;
 
-
 public class AddUsuarioHelper implements Helper {
-
 
     @Override
     public Object execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-    	String tipoUsuario = req.getParameter("tipoUsuario");
+        
+        String tipoUsuario = req.getParameter("tipoUsuario");
+        if ("#".equals(tipoUsuario)) {
+            req.setAttribute("result", "notRegistered");
+            return "cadastrarPessoa.jsp"; 
+        }
+
         String nome = req.getParameter("nome");
         String email = req.getParameter("email");
         String senha = req.getParameter("password");
         String telefone = req.getParameter("telefone");
-        String cpf = req.getParameter("cpf");
-        String cnpj = req.getParameter("cnpj");
-        if (tipoUsuario.equals("ADOTANTE")) {
-        	cnpj = null;
-        } else if (tipoUsuario.equals("ONG")) {
-        	cpf = null;
-        }
+        String cpf = "ADOTANTE".equals(tipoUsuario) ? req.getParameter("cpf") : null;
+        String cnpj = "ONG".equals(tipoUsuario) ? req.getParameter("cnpj") : null;
+
+        
         String logradouro = req.getParameter("logradouro");
         String numero = req.getParameter("numero");
         String complemento = req.getParameter("complemento");
@@ -33,6 +33,7 @@ public class AddUsuarioHelper implements Helper {
         String cep = req.getParameter("cep");
         String cidade = req.getParameter("cidade");
         String estado = req.getParameter("estado");
+
         
         Usuario usuario = new Usuario();
         usuario.setTipoUsuario(tipoUsuario);
@@ -50,16 +51,12 @@ public class AddUsuarioHelper implements Helper {
         usuario.setCidade(cidade);
         usuario.setEstado(estado);
 
+        
         UsuarioDao usuarioDao = new UsuarioDao(DataSourceSearcher.getInstance().getDataSource());
+        boolean usuarioCadastrado = usuarioDao.salvar(usuario);
         
-        
-        if (usuarioDao.salvar(usuario)) {
-			req.setAttribute("result", "registered");
-			return "/login.jsp";
-		} else {
-			req.setAttribute("result", "notRegistered");
-			return "user-register.jsp";
-		}
+        String resultado = usuarioCadastrado ? "registered" : "notRegistered";    
+        req.setAttribute("result", resultado);
+        return usuarioCadastrado ? "/login.jsp" : "cadastrarPessoa.jsp";
     }
-
 }

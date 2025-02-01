@@ -16,7 +16,7 @@
 	<div class="container">
 	    <div class="row my-3">
 	        <div class="col">
-	            <h4>Estatísticas dos Animais Cadastrados</h4>
+	            <h4>Pets Adotados</h4>
 	        </div>
 	    </div>
 	    <div class="row my-2">

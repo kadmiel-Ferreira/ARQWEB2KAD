@@ -18,7 +18,13 @@
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/errors.css" rel="stylesheet">
 
-<title>Página de Cadastro de Animais</title>
+<style>
+
+
+
+</style>
+
+<title>Cadastre Seu Pet</title>
 </head>
 <body>
 	<c:choose>
@@ -47,14 +53,14 @@
 
 				<!-- Nome -->
 				<div class="mb-2">
-					<label for="nome">Nome do Animal*</label> <input type="text"
+					<label for="nome">Nome do Animal</label> <input type="text"
 						name="nome" id="nome" class="form-control" required="required"
 						value="${animal != null ? animal.nome : ''}">
 				</div>
 
 				<!-- Espécie -->
 				<div class="mb-2">
-					<label for="especie">Espécie*</label> <select id="especie"
+					<label for="especie">Espécie</label> <select id="especie"
 						name="especie" class="form-control" required>
 						<option value="">Selecione a espécie</option>
 						<option value="CACHORRO"
@@ -66,7 +72,7 @@
 
 				<!-- Campo Raça -->
 				<div class="mb-2" id="racaCaes">
-					<label for="raca">Raça*</label> <select id="raca" name="racaCaes"
+					<label for="raca">Raça</label> <select id="raca" name="racaCaes"
 						class="form-control" >
 						<option value=""
 							${animal == null || animal.raca == '' ? 'selected' : ''}>Selecione</option>
@@ -106,7 +112,7 @@
 					</select>
 				</div>
 				<div class="mb-2" id="racaGatos">
-					<label for="raca">Raça*</label> 
+					<label for="raca">Raça</label> 
 					<select id="raca" name="racaGatos" class="form-control">
 					    <option value="" ${animal == null || animal.raca == '' ? 'selected' : ''}>Selecione</option>
 					    <option value="PERSA" ${animal != null && animal.raca == 'PERSA' ? 'selected' : ''}>Persa</option>
@@ -125,14 +131,14 @@
 
 				<!-- Idade -->
 				<div class="mb-2">
-					<label for="idade">Idade (anos)*</label> <input type="number"
+					<label for="idade">Idade (anos)</label> <input type="number"
 						name="idade" id="idade" class="form-control" required="required"
 						min="0" value="${animal != null ? animal.idade : ''}">
 				</div>
 
 				<!-- Campo Sexo -->
 				<div class="mb-2">
-					<label for="sexo">Sexo*</label> <select id="sexo" name="sexo"
+					<label for="sexo">Sexo</label> <select id="sexo" name="sexo"
 						class="form-control" required>
 						<option value="">Selecione o sexo</option>
 						<option value="MACHO"
@@ -144,7 +150,7 @@
 
 				<!-- Campo Porte -->
 				<div class="mb-2">
-					<label for="porte">Porte*</label> <select id="porte" name="porte"
+					<label for="porte">Porte</label> <select id="porte" name="porte"
 						class="form-control" required>
 						<option value="">Selecione o porte</option>
 						<option value="PEQUENO"
@@ -158,7 +164,7 @@
 
 				<!-- Campo Castrado -->
 				<div class="mb-2">
-					<label for="castrado">Castrado*</label> <select id="castrado"
+					<label for="castrado">Castrado</label> <select id="castrado"
 						name="castrado" class="form-control" required>
 						<option value="">Selecione uma opção</option>
 						<option value="true"
@@ -168,26 +174,26 @@
 					</select>
 				</div>
 
-				<!-- Campo Status -->
+				<%-- <!-- Campo Status -->
 				<div class="mb-2">
-					<label for="status">Status*</label> <select id="status"
+					<label for="status">Status</label> <select id="status"
 						name="status" class="form-control" required>
 						<option value="DISPONIVEL"
 							${animal != null && animal.status == 'DISPONIVEL' ? 'selected' : ''}>Disponível</option>
 						<option value="ADOTADO"
 							${animal != null && animal.status == 'ADOTADO' ? 'selected' : ''}>Adotado</option>
 					</select>
-				</div>
+				</div> --%>
 
 				<!-- Campo Descrição -->
 				<div class="mb-2">
-					<label for="descricao">Descrição*</label>
+					<label for="descricao">Descrição</label>
 					<textarea id="descricao" name="descricao" class="form-control"
 						required>${animal != null ? animal.descricao : ''}</textarea>
 				</div>
 				
 				<div class="mb-2">
-					<label for="imagem">Imagem*</label> <input type="file"
+					<label for="imagem">Imagem</label> <input type="file"
 						name="imagem" id="imagem" class="form-control"
 						value="${animal != null ? animal.imagem : ''}">
 				</div>

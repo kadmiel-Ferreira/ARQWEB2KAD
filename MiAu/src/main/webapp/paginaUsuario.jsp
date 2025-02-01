@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Página do Usuário</title>
+<title>Seu Perfil</title>
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -83,6 +83,7 @@
         margin-left: 5px;
     }
 </style>
+
 </head>
 <body>
 
@@ -119,16 +120,16 @@
         </c:when>
     </c:choose>
 
-    <!-- Bootstrap Script -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="js/theme.js"></script>
-    <!-- Script para Upload da Imagem -->
+    
     <script>
-        document.getElementById('uploadIcon').addEventListener('change', function(event) {
+        document.getElementById('uploadIcon').addEventListener('change', (event)=> {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = (e)=> {
                     document.getElementById('userIcon').src = e.target.result;
                 };
                 reader.readAsDataURL(file);

@@ -21,7 +21,10 @@ public class UsuarioDao {
 
 
         public Boolean salvar(Usuario usuario) throws Exception {
-            //getUserByEmail(usuario.getEmail());
+        	
+            if (getUserByEmail(usuario.getEmail())) {
+                return false;  
+            }
             String sql = "INSERT INTO usuario (tipo_usuario, nome, email, senha, telefone, cpf, cnpj, logradouro, numero, complemento, bairro, cep, cidade, estado) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -54,24 +57,17 @@ public class UsuarioDao {
         }
         
         public boolean getUserByEmail(String email) {
-    		
-    		
-    		String sql = "select email from usuario where email= ?";
-    		Optional<Usuario> optional = Optional.empty();
-    		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-    			ps.setString(1, email);
-    			try (ResultSet rs = ps.executeQuery()) {
-    				if (rs.next()) {
-    					Usuario user = new Usuario();
-    					user.setEmail(rs.getString(1));
-    					return true;
-    				}
-    			}
-    			return false;
-    		} catch (SQLException sqlException) {
-    			throw new RuntimeException("Erro durante a consulta no BD", sqlException);
-    		}
-    	}
+            String sql = "SELECT email FROM usuario WHERE email = ?";
+            try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, email);
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next(); 
+                }
+            } catch (SQLException sqlException) {
+                throw new RuntimeException("Erro durante a consulta no BD", sqlException);
+            }
+        }
+
         
         public Optional<Usuario> getUserByEmailAndPassword(String email, String password) {
     		String passwordEncripted = EncriptadorDeSenha.encode(password);

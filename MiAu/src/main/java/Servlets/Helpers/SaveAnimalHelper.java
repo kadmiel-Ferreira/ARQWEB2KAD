@@ -44,30 +44,32 @@ public class SaveAnimalHelper implements Helper {
         Sexo sexo = Sexo.valueOf(req.getParameter("sexo").toUpperCase());
         Porte porte = Porte.valueOf(req.getParameter("porte").toUpperCase());
         boolean castrado = req.getParameter("castrado") != null;
-        Status status = Status.valueOf(req.getParameter("status").toUpperCase());
+        Status status = Status.valueOf("Disponível".toUpperCase());
         String descricao = req.getParameter("descricao");
 
         AnimalDao animalDao = new AnimalDao(DataSourceSearcher.getInstance().getDataSource());
         Animal animal;
 
         if (id == 0) {
-            // Cadastro de novo animal
+            
             animal = new Animal();
         } else {
-            // Edição: buscamos o animal atual para manter a imagem se necessário
-            animal = animalDao.findById(id); // Método que busca o animal pelo ID
+            
+            animal = animalDao.findById(id); 
             if (animal == null) {
                 throw new RuntimeException("Animal não encontrado para edição");
             }
         }
 
-        // Processar o upload da imagem (se houver)
+        
         Part filePart = req.getPart("imagem");
         String fileName = extractFileName(filePart);
-        String imagePath = animal.getImagem(); // Mantém a imagem antiga por padrão
+        String imagePath = animal.getImagem(); 
 
         if (fileName != null && !fileName.isEmpty()) {
-            String uploadPath = "C:\\Users\\kferreira\\Downloads\\ARQWEB2KAD-master\\MiAu\\src\\main\\webapp\\uploads";
+            //String uploadPath = "C:\\Users\\kferreira\\Downloads\\ARQWEB2KAD-master\\MiAu\\src\\main\\webapp\\uploads";
+            String uploadPath = "/Users/giovanioliveira/Documents/TESTE/ARQWEB2KAD/MiAu/src/main/webapp/uploads";
+            
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();

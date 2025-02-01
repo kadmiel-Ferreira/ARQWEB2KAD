@@ -115,25 +115,19 @@
 		</div>
 	</div>
 
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
 	
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>	
+	<script type="text/javascript" src="js/theme.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/buscaCep.js"></script>
-	<script type="text/javascript" src="js/theme.js"></script>
 	<script type="text/javascript" src="js/mostrarSenha.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
 	
 	<script>
-	  $(document).ready(function () {
-        console.log("jQuery carregado, aplicando máscaras...");
-        
-        // Aplicando máscara ao telefone
-        $('#telefone').inputmask('(99) 99999-9999');
-
-        // Aplicando máscara ao CEP
+	  $(document).ready(()=> {
+		$('#telefone').inputmask('(99) 99999-9999');
         $('#cep').inputmask('99999-999');
     });
 	  </script>

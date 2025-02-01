@@ -26,7 +26,6 @@
 				</c:choose>
 				<li class="nav-item"><a class="nav-link"
 					href="ControllerServlet?action=ListAnimal">Adote</a></li>
-				<li class="nav-item"><a class="nav-link" href="statistics.jsp">Estatísticas</a></li>
 					<li class="nav-item"><a class="nav-link"
 					href="sobreNos.jsp">Sobre Nós</a></li>
 				<c:choose>

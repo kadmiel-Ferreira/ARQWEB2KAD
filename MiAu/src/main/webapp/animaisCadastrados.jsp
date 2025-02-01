@@ -40,7 +40,7 @@
         flex-direction: column;
     }
     </style>
-    <title>MiAu - Página Principal</title>
+    <title>Seus Pets</title>
 </head>
 <body>
     <jsp:include page="navbar.jsp" />
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <!-- Modal de Exclusão -->
+    
     <div class="modal fade" id="myModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">

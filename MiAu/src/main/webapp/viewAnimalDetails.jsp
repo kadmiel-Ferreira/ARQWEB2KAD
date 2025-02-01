@@ -46,7 +46,7 @@
         border-radius: 10px;
     }
 </style>
-<title>Página de Cadastro de Animais</title>
+<title>Detalhes do Pet</title>
 </head>
 <body>
     <jsp:include page="navbar.jsp" />
@@ -71,10 +71,19 @@
                             <p><i class="fas fa-check-circle"></i> <strong>Castrado:</strong> ${animal.castrado ? 'Sim' : 'Não'}</p>
                             <p><i class="fas fa-tag"></i> <strong>Status:</strong> <span class="badge ${animal.status == 'DISPONIVEL' ? 'bg-success' : 'bg-secondary'}">${animal.status}</span></p>
                         </div>
-                        
-                        <a href="https://api.whatsapp.com/send?phone=${animal.telefone}" class="btn btn-success btn-adopt w-100 mt-3" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Quero Adotar Esse Animal
+                        <c:choose>
+					<c:when test="${animal.sexo == 'FEMEA'}">
+						<a href="https://api.whatsapp.com/send?phone=${animal.telefone}" class="btn btn-success btn-adopt w-100 mt-3" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Quero Adotar a ${animal.nome}
                         </a>
+					</c:when>
+					<c:when test="${animal.sexo == 'MACHO'}">
+						<a href="https://api.whatsapp.com/send?phone=${animal.telefone}" class="btn btn-success btn-adopt w-100 mt-3" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Quero Adotar o ${animal.nome}
+                        </a>
+					</c:when>
+				</c:choose>
+                        
                     </div>
                 </div>
             </div>
@@ -91,6 +100,3 @@
 
 </body>
 </html>
-
-
-
