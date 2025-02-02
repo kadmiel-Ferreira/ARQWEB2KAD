@@ -29,7 +29,8 @@ public class AnimalDao {
 
 	public List<Animal> listAnimal() {
 		List<Animal> animais = new ArrayList<>();
-		String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status, a.imagem, a.idade, a.porte FROM animal a WHERE a.status = 'DISPONIVEL'";
+		String sql = "SELECT a.id, a.nome, a.especie, a.raca, a.sexo, a.status, a.descricao, a.imagem, a.idade, a.porte, u.telefone FROM animal a"
+				+ " inner join usuario u on a.usuarioId = u.id WHERE a.status = 'DISPONIVEL'";
 
 
 		try (Connection con = dataSource.getConnection();
@@ -44,9 +45,11 @@ public class AnimalDao {
 				animal.setRaca(Raca.valueOf(rs.getString("raca")));
 				animal.setSexo(Sexo.valueOf(rs.getString("sexo")));
 				animal.setStatus(Status.valueOf(rs.getString("status")));
+				animal.setDescricao(rs.getString("descricao"));
 				animal.setImagem(rs.getString("imagem"));
 				animal.setIdade(rs.getInt("idade"));
 				animal.setPorte(Porte.valueOf(rs.getString("porte")));
+				animal.setTelefone(rs.getString("telefone"));
 
 				animais.add(animal);
 			}
@@ -240,6 +243,7 @@ public class AnimalDao {
 		                animal.setCastrado(rs.getBoolean("castrado"));
 		                animal.setStatus(Status.valueOf(rs.getString("status")));
 		                animal.setDescricao(rs.getString("descricao"));
+		                animal.setImagem(rs.getString("imagem"));
 		                animais.add(animal);
 		                
 					}
