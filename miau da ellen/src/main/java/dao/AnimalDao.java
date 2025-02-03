@@ -50,7 +50,7 @@ public class AnimalDao {
 				animal.setIdade(rs.getInt("idade"));
 				animal.setPorte(Porte.valueOf(rs.getString("porte")));
 				animal.setTelefone(rs.getString("telefone"));
-
+					
 				animais.add(animal);
 			}
 			return animais;

@@ -36,7 +36,7 @@ public class FrontControllerServlet extends HttpServlet {
 
         // Permite acesso à listagem de animais para adoção sem login
         if ((session == null || session.getAttribute("user") == null) &&
-            (action == null || (!action.equals("login") && !action.equals("AdicionarPessoa") && !action.equals("ListAnimal")))) {
+            (action == null || (!action.equals("login") && !action.equals("AdicionarPessoa") && !action.equals("ListAnimal") && !action.equals("searchEspecies"))) ) {
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
             return; 
         } else {

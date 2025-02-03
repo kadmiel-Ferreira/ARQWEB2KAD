@@ -11,7 +11,7 @@
             let expires = "";
             if (days) {
                 let date = new Date();
-                date.setTime(date.getTime() + (minutes * 60 * 500));
+                date.setTime(date.getTime() + (seconds * 1000));
                 expires = "; expires=" + date.toUTCString();
             }
             document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";

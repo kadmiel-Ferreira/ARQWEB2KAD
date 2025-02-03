@@ -15,8 +15,7 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
-<link href="css/styles.css" rel="stylesheet">
-<link href="css/errors.css" rel="stylesheet">
+
 
 <style>
 body {
@@ -317,17 +316,18 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 								</select>
 							</div>
 
-							<%-- <!-- Campo Status -->
-				<div class="mb-2">
-					<label for="status">Status</label> <select id="status"
-						name="status" class="form-control" required>
-						<option value="DISPONIVEL"
-							${animal != null && animal.status == 'DISPONIVEL' ? 'selected' : ''}>Disponível</option>
-						<option value="ADOTADO"
-							${animal != null && animal.status == 'ADOTADO' ? 'selected' : ''}>Adotado</option>
-					</select>
-				</div> --%>
-
+							 <!-- Campo Status -->
+							 <c:if test="${animal != null}">
+							<div class="mb-2">
+								<label for="status">Status</label> <select id="status"
+									name="status" class="form-control" required>
+									<option value="DISPONIVEL"
+										${animal != null && animal.status == 'DISPONIVEL' ? 'selected' : ''}>Disponível</option>
+									<option value="ADOTADO"
+										${animal != null && animal.status == 'ADOTADO' ? 'selected' : ''}>Adotado</option>
+								</select>
+							</div> 
+							</c:if>
 							<!-- Campo Descrição -->
 							<div class="mb-2">
 								<label for="descricao">Descrição</label>
@@ -362,7 +362,7 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/theme.js"></script>
-	<script type="text/javascript" src="js/theme.js"></script>
+	
 
 </body>
 </html>

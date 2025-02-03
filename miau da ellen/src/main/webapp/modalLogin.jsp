@@ -63,3 +63,11 @@
     </div>
   </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let emailInput = document.getElementById("email");
+        if (emailInput.value) {
+            emailInput.value = decodeURIComponent(emailInput.value);
+        }
+    });
+</script>

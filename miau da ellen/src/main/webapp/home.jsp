@@ -29,7 +29,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>Home - Miaudote</title>
+<title>Adote - Miaudote</title>
 </head>
 
 <style>
@@ -152,15 +152,10 @@ select option:focus {
 							alt="${animal.nome}">
 						<div class="card-body text-center">
 							<h5 class="card-title">${animal.nome}</h5>
-							<%--                             <p class="card-text"><strong>Espécie:</strong> ${animal.especie}</p> --%>
-							<%--                             <p class="card-text"><strong>Raça:</strong> ${animal.raca}</p> --%>
-							<%--                             <p class="card-text"><strong>Sexo:</strong> ${animal.sexo}</p> --%>
-							<!--                             <p class="card-text"><strong>Status:</strong>  -->
 							<p>
 								<span
 									class="badge ${animal.status == 'DISPONIVEL' ? 'bg-success' : 'bg-secondary'}">${animal.status}</span>
 							</p>
-							<%--                             <a href="ControllerServlet?action=ViewAnimalDetails&animal-id=${animal.id}" class="btn btn-primary btn-adopt w-100">Ver detalhes</a> --%>
 							<button type="button" class="btn btn-primary btn-adopt w-100"
 								data-bs-toggle="modal" data-bs-target="#${animal.id}">
 								Ver detalhes</button>

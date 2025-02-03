@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page pageEncoding="UTF-8"%>
-
+<jsp:include page="modalLogin.jsp" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <nav class="navbar navbar-expand-lg">
@@ -38,17 +38,15 @@
 					<c:when test="${empty sessionScope.user}">
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">Conta
-						</a>
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Conta </a>
 							<ul class="dropdown-menu">
-								<!-- 								<li><a class="dropdown-item" href="login.jsp">Login</a></li> -->
 								<li><button type="button" class="dropdown-item"
 										data-bs-toggle="modal" data-bs-target="#exampleModal">
 										Login</button></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="cadastrarPessoa.jsp">Cadastrar</a></li>
 							</ul></li>
-			
 			</ul>
 			</c:when>
 			</c:choose>

@@ -52,7 +52,7 @@
 					de você.</p>
 				<p class="lead">Ter um animal de estimação traz benefícios para
 					a saúde física e mental. É uma troca de amor e carinho que faz bem
-					pra todo mundo. Leve um para casa: cuide dele e deixe que ele cuide
+					pra todo mundo. Leve um para casa, cuide dele e deixe que ele cuide
 					de você também.</p>
 				<a href="ControllerServlet?action=ListAnimal"
 					class="btn cta-button">Ver bichinhos disponíveis</a>

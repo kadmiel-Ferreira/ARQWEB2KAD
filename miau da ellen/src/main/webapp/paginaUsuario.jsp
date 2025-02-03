@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <!-- Estilos personalizados -->
-
 <link href="css/styles.css" rel="stylesheet">
 
 <style>
@@ -22,6 +21,7 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        font-family: Arial, sans-serif;
     }
 
     .container {
@@ -49,9 +49,13 @@
         height: 120px;
         border-radius: 50%;
         object-fit: cover;
-        border: 4px solid #4CAF50;
+        border: 5px solid #4CAF50;
         cursor: pointer;
         transition: 0.3s;
+        margin-bottom: 20px;
+        padding: 10px;
+        font-size: 80px; 
+        
     }
 
     .user-icon:hover {
@@ -62,6 +66,10 @@
         margin: 10px 0;
         font-size: 18px;
         font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
     }
 
     .btn-custom {
@@ -70,6 +78,7 @@
         font-size: 16px;
         transition: 0.3s;
         width: 100%;
+        margin-top: 15px;
     }
 
     .btn:hover {
@@ -78,6 +87,15 @@
 
     .logout-icon {
         margin-left: 5px;
+    }
+
+    .icon-container {
+        font-size: 50px;
+        color: #4CAF50;
+    }
+
+    .profile-header {
+        margin-bottom: 20px;
     }
 </style>
 
@@ -94,22 +112,29 @@
         <c:when test="${not empty sessionScope.user}">
             <div class="container">
                 <div class="profile-container">
-                    <label for="uploadIcon">
-                        <img src="img/default-user.jpg" class="user-icon" id="userIcon" alt="Foto de Perfil">
-                    </label>
-                    <input type="file" id="uploadIcon">
+
+                    <div class="profile-header">
+                        
+                        <i class="fa-solid fa-paw user-icon"></i>
+                    </div>
 
                     <h2 class="mt-3">Olá, ${sessionScope.user.nome}!</h2>
-                    
-                    <p class="info"><i class="fa-solid fa-envelope"></i><span></span> Email: ${sessionScope.user.email}</p>
 
-                    
+                    <p class="info">
+                        <i class="fa-solid fa-envelope"></i><span>Email: ${sessionScope.user.email}</span>
+                    </p>
+                    <p class="info">
+                        <i class="fa-solid fa-phone"></i><span>Telefone: ${sessionScope.user.telefone}</span>
+                    </p>
+                    <p class="info">
+                        <i class="fa-solid fa-map-marker-alt"></i><span>Endereço: ${sessionScope.user.logradouro}, ${sessionScope.user.numero}</span>
+                    </p>
 
-                    <a href="editarPerfil.jsp" class="btn btn-primary btn-custom mt-3">
+                    <a href="cadastrarPessoa.jsp" class="btn btn-primary btn-custom">
                         <i class="fa-solid fa-user-pen"></i> Editar Perfil
                     </a> 
                     
-                    <a class="btn btn-danger btn-custom mt-2" href="ControllerServlet?action=logout">
+                    <a class="btn btn-danger btn-custom" href="ControllerServlet?action=logout">
                         <i class="fa-solid fa-right-from-bracket logout-icon"></i> Sair
                     </a>
                 </div>
@@ -120,19 +145,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="js/theme.js"></script>
-    
-    <script>
-        document.getElementById('uploadIcon').addEventListener('change', (event)=> {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e)=> {
-                    document.getElementById('userIcon').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
 
 </body>
 </html>

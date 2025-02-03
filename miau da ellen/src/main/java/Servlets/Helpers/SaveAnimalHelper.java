@@ -44,7 +44,7 @@ public class SaveAnimalHelper implements Helper {
         Sexo sexo = Sexo.valueOf(req.getParameter("sexo").toUpperCase());
         Porte porte = Porte.valueOf(req.getParameter("porte").toUpperCase());
         boolean castrado = req.getParameter("castrado") != null;
-        Status status = Status.valueOf("DISPONIVEL".toUpperCase());
+        Status status = Status.valueOf(req.getParameter("status").toUpperCase());
         String descricao = req.getParameter("descricao");
 
         AnimalDao animalDao = new AnimalDao(DataSourceSearcher.getInstance().getDataSource());
