@@ -22,8 +22,8 @@ public class UsuarioDao {
 
         public Boolean salvar(Usuario usuario) throws Exception {
         	
-            if (getUserByEmail(usuario.getEmail())) {
-                return false;  
+            if(getUserByEmailAndPassword(usuario.getEmail(), usuario.getSenha()) != null) {
+            	return update(usuario);
             }
             String sql = "INSERT INTO usuario (tipo_usuario, nome, email, senha, telefone, cpf, cnpj, logradouro, numero, complemento, bairro, cep, cidade, estado) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -56,17 +56,7 @@ public class UsuarioDao {
     		}
         }
         
-        public boolean getUserByEmail(String email) {
-            String sql = "SELECT email FROM usuario WHERE email = ?";
-            try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-                ps.setString(1, email);
-                try (ResultSet rs = ps.executeQuery()) {
-                    return rs.next(); 
-                }
-            } catch (SQLException sqlException) {
-                throw new RuntimeException("Erro durante a consulta no BD", sqlException);
-            }
-        }
+        
 
         
         public Optional<Usuario> getUserByEmailAndPassword(String email, String password) {
@@ -122,7 +112,36 @@ public class UsuarioDao {
         }
     }
 
-//    CRIAR UPDATE!!!!!!!!!
+    
+    
+    
+    
+    public boolean update(Usuario usuario) {
+        String sql = "UPDATE usuario SET nome=?, email=?, senha=?, telefone=?, cpf=?, cnpj=?, logradouro=?, numero=?, complemento=?, bairro=?, cep=?, cidade=?, estado=? WHERE id=?";
+        
+        try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getEmail());
+            ps.setString(3, usuario.getSenha());
+            ps.setString(4, usuario.getTelefone());
+            ps.setString(5, usuario.getCpf());
+            ps.setString(6, usuario.getCnpj());
+            ps.setString(7, usuario.getLogradouro());
+            ps.setString(8, usuario.getNumero());
+            ps.setString(9, usuario.getComplemento());
+            ps.setString(10, usuario.getBairro());
+            ps.setString(11, usuario.getCep());
+            ps.setString(12, usuario.getCidade());
+            ps.setString(13, usuario.getEstado());
+            ps.setLong(14, usuario.getId());
+            
+            int rowsUpdated = ps.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao atualizar usuário", e);
+        }
+    }
 
 
 

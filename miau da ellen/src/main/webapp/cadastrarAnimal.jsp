@@ -337,8 +337,7 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 
 							<div class="mb-2">
 								<label for="imagem">Imagem</label> <input type="file"
-									name="imagem" id="imagem" class="form-control"
-									value="${animal != null ? animal.imagem : ''}">
+									name="imagem" id="imagem" class="form-control">
 							</div>
 
 							<div class="mb-2">

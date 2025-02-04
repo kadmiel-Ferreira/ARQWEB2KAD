@@ -32,9 +32,13 @@
 			<form action="ControllerServlet" method="post">
 				<h1 class="text-center">
 					<c:choose>
-						<c:when test="${not empty sessionScope.user}">Editar Usuário</c:when>
-						<c:otherwise>Cadastre-se</c:otherwise>
-					</c:choose>
+							<c:when test="${sessionScope.user == null}">
+								<input type="hidden" name="id" value="0">
+							</c:when>
+							<c:when test="${sessionScope.user != null}">
+								<input type="hidden" name="id" value="${sessionScope.user.id}">
+							</c:when>
+						</c:choose>
 				</h1>
 
 				<c:if test="${empty sessionScope.user}">

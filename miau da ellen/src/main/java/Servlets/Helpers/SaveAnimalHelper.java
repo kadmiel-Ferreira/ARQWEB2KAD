@@ -44,7 +44,13 @@ public class SaveAnimalHelper implements Helper {
         Sexo sexo = Sexo.valueOf(req.getParameter("sexo").toUpperCase());
         Porte porte = Porte.valueOf(req.getParameter("porte").toUpperCase());
         boolean castrado = req.getParameter("castrado") != null;
-        Status status = Status.valueOf(req.getParameter("status").toUpperCase());
+        Status status;
+        if(req.getParameter("status") != null) {
+        	status = Status.valueOf(req.getParameter("status").toUpperCase());
+        	
+        }else {
+        	status = Status.valueOf("DISPONIVEL");
+        }
         String descricao = req.getParameter("descricao");
 
         AnimalDao animalDao = new AnimalDao(DataSourceSearcher.getInstance().getDataSource());
@@ -68,7 +74,7 @@ public class SaveAnimalHelper implements Helper {
 
         if (fileName != null && !fileName.isEmpty()) {
             //String uploadPath = "C:\\Users\\kferreira\\Downloads\\ARQWEB2KAD-master\\MiAu\\src\\main\\webapp\\uploads";
-            String uploadPath = "/Users/giovanioliveira/Documents/TESTE/ARQWEB2KAD/MiAu/src/main/webapp/uploads";
+            String uploadPath = "/Users/giovanioliveira/Documents/TESTE/ARQWEB2KAD/miau da ellen/src/main/webapp/uploads";
             
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {

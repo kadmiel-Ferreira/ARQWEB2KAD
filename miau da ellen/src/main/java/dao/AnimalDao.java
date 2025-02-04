@@ -255,12 +255,6 @@ public class AnimalDao {
 			return animais;
 		}
 	
-	/*
-	 * private void preencherPreparedStatementAnimal(PreparedStatement ps, String
-	 * nome, String genero, Status status) throws SQLException { ps.setString(1,
-	 * nome); ps.setString(2, String.valueOf(status)); ps.setString(3, genero);
-	 * 
-	 * }
-	 */
+	
 
 }

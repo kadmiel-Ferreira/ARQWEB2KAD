@@ -3,6 +3,7 @@ package Servlets.Helpers;
 import dao.UsuarioDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Animal;
 import model.Usuario;
 import utils.DataSourceSearcher;
 import utils.EncriptadorDeSenha;
@@ -17,15 +18,13 @@ public class AddUsuarioHelper implements Helper {
             req.setAttribute("result", "notRegistered");
             return "cadastrarPessoa.jsp"; 
         }
-
+        Long id = Long.parseLong(req.getParameter("id"));
         String nome = req.getParameter("nome");
         String email = req.getParameter("email");
         String senha = req.getParameter("password");
         String telefone = req.getParameter("telefone");
         String cpf = "ADOTANTE".equals(tipoUsuario) ? req.getParameter("cpf") : null;
         String cnpj = "ONG".equals(tipoUsuario) ? req.getParameter("cnpj") : null;
-
-        
         String logradouro = req.getParameter("logradouro");
         String numero = req.getParameter("numero");
         String complemento = req.getParameter("complemento");
@@ -34,13 +33,15 @@ public class AddUsuarioHelper implements Helper {
         String cidade = req.getParameter("cidade");
         String estado = req.getParameter("estado");
 
-        
+        UsuarioDao usuarioDao = new UsuarioDao(DataSourceSearcher.getInstance().getDataSource());
         Usuario usuario = new Usuario();
+        
         usuario.setTipoUsuario(tipoUsuario);
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setSenha(EncriptadorDeSenha.encode(senha)); 
-        usuario.setTelefone(telefone);
+        usuario.setTelefone(telefone != null ? telefone.replaceAll("\\D", "") : null);
+
         usuario.setCpf(cpf);
         usuario.setCnpj(cnpj);
         usuario.setLogradouro(logradouro);
@@ -52,7 +53,7 @@ public class AddUsuarioHelper implements Helper {
         usuario.setEstado(estado);
 
         
-        UsuarioDao usuarioDao = new UsuarioDao(DataSourceSearcher.getInstance().getDataSource());
+       
         boolean usuarioCadastrado = usuarioDao.salvar(usuario);
         
         String resultado = usuarioCadastrado ? "registered" : "notRegistered";    
