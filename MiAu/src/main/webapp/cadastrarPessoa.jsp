@@ -189,7 +189,7 @@
 						<label for="nome">Nome completo</label> <input type="text"
 							name="nome" id="nome" class="form-control" minlength="3"
 							maxlength="50" required
-							value="${not empty requestScope.user ? requestScope.user.nome : ''}">
+							value="${not empty sessionScope.user ? sessionScope.user.nome : ''}">
 					</div>
 
 					<div>

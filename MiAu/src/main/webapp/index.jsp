@@ -244,6 +244,8 @@
                 gatos, arranhadores e brinquedos interativos ajudam a mantê-los
                 ativos.</p>
         </div>
+        
+        <hr>
         <div class="col-md-4 step text-center">
             <i class="fas fa-shower"></i>
             <h5>Higiene e Cuidados Pessoais</h5>
