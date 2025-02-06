@@ -13,6 +13,127 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<style>
+       /* Estilo geral */
+body {
+    background: linear-gradient(to right, #FFF8DC, #FAF0E6);
+    color: #191970;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Estilo do cabeçalho */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #191970;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização da tabela */
+.table {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background-color: #191970;
+    color: white;
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+/* Estilização dos botões */
+.btn-custom {
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-warning {
+    background-color: #F4A460 !important;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #FF7F50 !important;
+}
+
+.btn-danger {
+    background-color: #CD5C5C !important;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #B22222 !important;
+}
+
+/* Modal de exclusão */
+.modal-header {
+    background-color: #F4A460;
+    color: #191970;
+}
+
+.modal-body {
+    background-color: #FFF8DC;
+    color: #191970;
+    font-size: 1.1rem;
+}
+
+.modal-footer {
+    background-color: #F4A460;
+    border-top: none;
+}
+
+.btn-secondary {
+    border-radius: 25px;
+    padding: 8px 16px;
+}
+
+/* Navbar estilizada */
+.navbar {
+    background-color: #FFF8DC;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(25, 25, 112, 0.5);
+}
+
+.navbar-nav .nav-link {
+    color: #696969 !important;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #F4A460 !important;
+}
+
+/* Ajuste de responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .table {
+        font-size: 0.9rem;
+    }
+    .btn-custom {
+        padding: 6px 10px;
+    }
+}
        
     </style>
     <title>Seus Pets</title>
