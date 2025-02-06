@@ -32,8 +32,7 @@
 				</c:choose>
 				<li class="nav-item"><a class="nav-link"
 					href="ControllerServlet?action=ListAnimal">Adote</a></li>
-				<li class="nav-item"><a class="nav-link" href="#sobreNos">Sobre
-						Nós</a></li>
+
 				<c:choose>
 					<c:when test="${empty sessionScope.user}">
 						<li class="nav-item dropdown"><a
