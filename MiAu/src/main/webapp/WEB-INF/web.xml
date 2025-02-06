@@ -48,6 +48,10 @@
     <param-name>searchEspecies</param-name>
     <param-value>Servlets.Helpers.SearchForEspecieHelper</param-value>
   </context-param>
+    <context-param>
+    <param-name>editUsuario</param-name>
+    <param-value>Servlets.Helpers.EditUsuarioHelper</param-value>
+  </context-param>
   <servlet>
     <description></description>
     <display-name>SearchForEspecieHelper</display-name>
@@ -57,5 +61,15 @@
   <servlet-mapping>
     <servlet-name>SearchForEspecieHelper</servlet-name>
     <url-pattern>/SearchForEspecieHelper</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    
+    <display-name>editUsuarioHelper</display-name>
+    <servlet-name>EditUsuarioHelper</servlet-name>
+    <servlet-class>Servlets.Helpers.EditUsuarioHelper</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditUsuarioHelper</servlet-name>
+    <url-pattern>/EditUsuarioHelper</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -21,14 +21,8 @@ public class UsuarioDao {
 
 
     public Boolean salvar(Usuario usuario) throws Exception {
-        Optional<Usuario> usuarioExistente = getUserByEmail(usuario.getEmail());
-
-        if (usuarioExistente.isPresent()) {
-            // Se o usuário já existe, chama o update
-            return update(usuario);
-        }
-
-        String sql = "INSERT INTO usuario (tipo_usuario, nome, email, senha, telefone, cpf, cnpj, logradouro, numero, complemento, bairro, cep, cidade, estado) "
+        
+    	String sql = "INSERT INTO usuario (tipo_usuario, nome, email, senha, telefone, cpf, cnpj, logradouro, numero, complemento, bairro, cep, cidade, estado) "
                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = dataSource.getConnection();
@@ -111,6 +105,40 @@ public class UsuarioDao {
     			throw new RuntimeException("Erro durante a consulta no BD", sqlException);
     		}
     	}
+        
+        
+        
+        public Usuario getUserById(Long id) {
+            String sql = "SELECT id, nome, email, tipo_usuario, telefone, logradouro, numero, complemento, bairro, cep, cidade, estado FROM usuario WHERE id=?";
+            
+            try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setLong(1, id);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        Usuario user = new Usuario();
+                        user.setId(rs.getLong(1));
+                        user.setNome(rs.getString(2));
+                        user.setEmail(rs.getString(3));
+                        user.setTipoUsuario(rs.getString(4));
+                        user.setTelefone(rs.getString(5));
+                        user.setLogradouro(rs.getString(6));
+                        user.setNumero(rs.getString(7));
+                        user.setComplemento(rs.getString(8));
+                        user.setBairro(rs.getString(9));
+                        user.setCep(rs.getString(10));
+                        user.setCidade(rs.getString(11));
+                        user.setEstado(rs.getString(12));
+                        return user;
+                    } else {
+                        throw new RuntimeException("Usuário com ID " + id + " não encontrado.");
+                    }
+                }
+            } catch (SQLException sqlException) {
+                throw new RuntimeException("Erro durante a consulta no BD", sqlException);
+            }
+        }
+
+        
         
 
     public void delete(int id) {

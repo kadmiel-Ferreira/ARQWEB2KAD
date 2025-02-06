@@ -31,6 +31,89 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+	<style>
+/* Estilização da seção de estatísticas */
+.container {
+    background-color: #FFF8DC; /* Cor de fundo da seção, compatível com o fundo da página */
+    padding: 20px;
+    position: center;
+    max-width: 1200px; /* Limite de largura para a seção */
+    text-align: center;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 2rem; /* Aumentei o tamanho do título para melhorar a visibilidade */
+    font-weight: bold;
+    color: #191970; /* Cor escura para contraste */
+    margin-bottom: 20px; /* Distância maior do conteúdo abaixo */
+    position: relative;
+    text-align: center;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 2px;
+    background-color: #F4A460; /* Linha de destaque */
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Centralizando o card */
+.statistics-card {
+   
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #FFF8DC;
+    width: 100%;
+    max-width: 600px; /* Limita a largura do card */
+   
+
+    
+}
+
+
+.statistics-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.statistics-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #191970;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 40px;
+    text-align: center; /* Centraliza o conteúdo dentro do card */
+}
+
+.card-body canvas {
+    width: 100% !important; /* Garante que o canvas ocupe toda a largura do card */
+    height: 300px; /* Ajuste a altura para o gráfico não ficar achatado */
+    background-color: #FFF8DC;
+   
+}
+/* Responsividade */
+@media (max-width: 767px) {
+    .statistics-card {
+        margin-bottom: 20px;
+    }
+
+    .card-body canvas {
+        height: 250px;
+    }
+}
+
+	
+</style>
+	
+	
 <title>Home</title>
 <title>Encontre Seu Novo AUmigo</title>
 
@@ -99,25 +182,27 @@
 		</div>
 	</div>
 
-
+	
 	<div class="container">
-		<div class="row my-3">
-			<div class="col">
-				<h4>Animais Adotados ao Todo</h4>
-			</div>
-		</div>
-		<div class="row my-2">
-			<div class="col-md-6 py-1">
-				<div class="card">
-					<h5 class="card-title">Animais por tipo</h5>
-					<div class="card-body">
-						<canvas id="chDonut1"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="row my-3">
+        <div class="col">
+            <h4 class="section-title">Animais Disponíveis ao Todo</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center my-1">
+    <div class="col-md-6 py-1">
+        <div class="card statistics-card">
+            <h5 class="card-title">Animais por Raça</h5>
+            <div class="card-body">
+                <canvas id="chDonut1"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
-	</div>
+
+
 
 	<jsp:include page="modalLogin.jsp" />
 	<script
@@ -131,7 +216,7 @@
 	<script type="text/javascript" src="js/home.js"></script>
 	<script type="text/javascript" src="js/theme.js"></script>
 	<script type="text/javascript" src="js/statistics.js"></script>
-	<script type="text/javascript" src="js/criarGaleria.js"></script>
+	
 
 </body>
 </html>

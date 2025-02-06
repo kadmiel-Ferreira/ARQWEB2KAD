@@ -66,10 +66,10 @@ public class AddUsuarioHelper implements Helper {
         
 
         try {
-            boolean usuarioSalvoOuAtualizado = usuarioDao.salvar(usuario);
-            if (usuarioSalvoOuAtualizado) {
+            boolean usuarioSalvo = usuarioDao.salvar(usuario);
+            if (usuarioSalvo) {
                 req.setAttribute("result", "success");
-                return "/index.jsp"; // Se o cadastro ou update deu certo, redireciona para o perfil
+                return "/index.jsp"; 
             } else {
                 req.setAttribute("result", "error");
                 return "cadastrarPessoa.jsp";

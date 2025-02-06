@@ -7,11 +7,12 @@
             return match ? decodeURIComponent(match[2]) : "";
         }
 
-        function setCookie(name, value, days) {
+        function setCookie(name, value, seconds) {
             let expires = "";
             if (days) {
                 let date = new Date();
                 date.setTime(date.getTime() + (seconds * 1000));
+
                 expires = "; expires=" + date.toUTCString();
             }
             document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
@@ -32,7 +33,7 @@
             fields.forEach(field => {
                 let input = document.getElementById(field);
                 if (input) {
-                    setCookie(field, input.value, 7);
+                    setCookie(field, input.value, 10);
                 }
             });
         }

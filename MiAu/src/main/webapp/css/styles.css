@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* ESTILIZAÇÃO DA PSÁGINA INDEX */
+/* ESTILIZAÇÃO DA PÁGINA INDEX */
 body {
 	background: linear-gradient(to right, #FFF8DC, #FFF8DC) !important;
 	color: #191970;
@@ -165,20 +165,63 @@ to {
 .img-container img:hover {
 	transform: scale(1.05);
 }
-
-.modal-content {
-	border-radius: 15px;
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+/* Estilização do Modal */
+.modal-header {
+    background-color: #F4A460; /* Cor do cabeçalho do modal */
+    color: #191970; /* Cor do texto no cabeçalho */
 }
 
-.modal-header {
-	border-bottom: none;
-	padding: 15px 20px;
+.modal-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    background-color: #FFF8DC; /* Cor de fundo do corpo do modal */
+    color: #191970; /* Cor do texto no corpo do modal */
 }
 
 .modal-footer {
-	border-top: none;
-	padding: 15px 20px;
+    background-color: #F4A460; /* Cor de fundo do rodapé do modal */
+    border-top: none;
+}
+
+/* Estilização do botão dentro do modal */
+.btn-primary {
+    background-color: #F4A460; /* Cor de fundo do botão */
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #FF7F50; /* Cor do botão ao passar o mouse (laranja mais escuro) */
+}
+
+/* Ajustes do botão de fechar */
+.btn-close {
+    background-color: transparent;
+    border: none;
+    color: #191970; /* Cor do X do botão de fechar */
+}
+
+/* Botão de alternar senha */
+.toggle-password {
+    cursor: pointer;
+    color: #191970; /* Cor do ícone de olho */
+}
+
+.toggle-password:hover {
+    color: #F4A460; /* Cor ao passar o mouse */
+}
+
+/* Ajuste da sombra do modal */
+.modal-content {
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .info-animal p {
@@ -192,7 +235,7 @@ to {
 
 /* ESTILIZAÇÃO NAVBAR */
 .navbar {
-	background: #FFF8DC; /*BRANQUINHO*/
+	background-color: #FFF8DC; /*BRANQUINHO*/
 	color: #191970; /*AZUL ESURO*/
 	backdrop-filter: blur(10px);
 	box-shadow: 0 4px 10px rgba(25, 25, 112, 0.5);

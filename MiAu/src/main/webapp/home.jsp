@@ -121,6 +121,11 @@ select option:focus {
 	background-color: #FF7F50;
 	border: 2px solid #FF7F50;
 }
+
+
+
+
+
 </style>
 
 <body>
@@ -303,6 +308,6 @@ select option:focus {
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/home.js"></script>
 	<script type="text/javascript" src="js/theme.js"></script>
-
+		
 </body>
 </html>

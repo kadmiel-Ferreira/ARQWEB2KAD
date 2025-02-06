@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
-<html lang="pt-BR" data-bs-theme="light">
+<html lang="pt-BR"">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -15,12 +15,12 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <style>
 body {
 	font-family: 'Arial', sans-serif;
-	background-color: #f7f7f7;
+	
 	margin: 0;
 	padding: 0;
 }
@@ -54,25 +54,25 @@ h1 {
 }
 
 input[type="text"], input[type="number"], input[type="file"], select, textarea {
-	border: 1px solid #ccc;
+	
 	padding: 10px; /* Maior altura nos campos */
 	width: 100%;
 	margin-bottom: 20px;
 	font-size: 16px;
 	transition: border-color 0.3s ease;
 	border-radius: 0;
-	background-color: #DCDCDC;
 	box-sizing: border-box;
+	background-color: #333; /* Fundo escuro */
 }
 
 select, textarea {
-	background-color: #DCDCDC !important;
+	
 	border-radius: 0 !important;
-	border: 2px solid #F4A460 !important;
+	
 }
 
 input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus, input[type="file"]:focus {
-	border-color: #F4A460;
+	border-color: none;
 	outline: none;
 }
 
@@ -119,7 +119,7 @@ label {
 input[type="text"], input[type="number"], input[type="file"], select, textarea {
 	height: 45px;
 	margin-bottom: 5px;
-	border: 2px solid #F4A460;
+	
 }
 
 /* Responsividade */
@@ -179,7 +179,7 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 							<!-- Nome -->
 							<div class="mb-2">
 								<label for="nome">Nome do Animal</label> <input type="text"
-									name="nome" id="nome" class="form-control" required="required"
+									name="nome" id="nome" class="form-control" required="required" placeholder="Digite o nome"
 									value="${animal != null ? animal.nome : ''}">
 							</div>
 
@@ -274,7 +274,7 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 							<div class="mb-2">
 								<label for="idade">Idade (anos)</label> <input type="number"
 									name="idade" id="idade" class="form-control"
-									required="required" min="0"
+									required="required" min="0" placeholder="Digite a idade"
 									value="${animal != null ? animal.idade : ''}">
 							</div>
 
@@ -331,7 +331,7 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 							<!-- Campo Descrição -->
 							<div class="mb-2">
 								<label for="descricao">Descrição</label>
-								<textarea id="descricao" name="descricao" class="form-control"
+								<textarea id="descricao" name="descricao" class="form-control" 
 									required>${animal != null ? animal.descricao : ''}</textarea>
 							</div>
 
