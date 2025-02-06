@@ -133,7 +133,7 @@ select option:focus {
 
 	<div class="container mt-5">
 		<h2 class="text-center mb-4">
-			Encontre seu novo amigo <i class="fa-solid fa-paw"></i>
+			Encontre seu novo Aumigo <i class="fa-solid fa-paw"></i>
 		</h2>
 
 		<form action="ControllerServlet" method="post" class="mb-4">

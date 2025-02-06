@@ -242,6 +242,36 @@ to {
 	padding: 10px 20px;
 }
 
+
+
+.navbar .dropdown-item{
+		
+	
+	color: #696969;
+}
+
+
+
+.navbar .dropdown-item:hover{
+		
+	transition: color 0.3s;
+	color: #F4A460;
+	background-color: #FFF8DC;
+}
+
+.navbar .dropdown-item, .navbar .dropdown-menu{
+	background-color: #FFF8DC;
+}
+.navbar .dropdown-item{
+	
+	
+}
+
+.navbar .dropdown-menu, .navbar .dropdown-divider{
+	border: 1px solid #696969;
+}
+
+
 .navbar-nav .nav-link {
 	color: #696969 !important; /*CINZA ESCURO*/
 	font-weight: bold;

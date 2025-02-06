@@ -134,7 +134,7 @@
                         <i class="fa-solid fa-user-pen"></i> Editar Perfil
                     </a> 
                     
-                    <a class="btn btn-danger btn-custom" href="ControllerServlet?action=logout">
+                    <a class="btn btn-danger btn-custom" onclick="deleteCookies()" href="ControllerServlet?action=logout">
                         <i class="fa-solid fa-right-from-bracket logout-icon"></i> Sair
                     </a>
                 </div>
