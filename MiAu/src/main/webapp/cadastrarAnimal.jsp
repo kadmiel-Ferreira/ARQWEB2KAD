@@ -355,12 +355,21 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
 	</c:choose>
 
 
-	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div vw-plugin-container></div>
+    </div>
+</div>
+
+
+	<script defer src="js/apiLibras.js"></script>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/theme.js"></script>
+	<!-- <script type="text/javascript" src="js/theme.js"></script> -->
 	
 
 </body>

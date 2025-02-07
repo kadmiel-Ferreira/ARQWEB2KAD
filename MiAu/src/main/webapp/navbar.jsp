@@ -52,8 +52,13 @@
 
 			</ul>
 
+
+
+
 			<div class="d-flex align-items-center">
-				<c:if test="${not empty sessionScope.user }">
+
+
+			<c:if test="${not empty sessionScope.user }">
 
 					<a href="paginaUsuario.jsp" class="nav-link"> <svg
 							xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -69,16 +74,26 @@
 					</a>
 				</c:if>
 
+<!-- 				<button id="aumentarFonte" class="btn btn-outline-secondary ms-2">
+				<i class="fa-solid fa-magnifying-glass-plus"></i>
+				</button>
+				<button id="diminuirFonte"  class="btn btn-outline-secondary ms-2">
+				<i class="fa-solid fa-magnifying-glass-minus"></i>
+				</button>
+ -->
+				
 
-				<button id="switchTheme" class="btn btn-outline-secondary ms-2">
+
+				<!-- <button id="theme-toggle" onclick="switchTheme()" class="btn btn-outline-secondary ms-2">
 					<svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="18"
 						height="18" fill="currentColor" class="bi bi-sun-fill"
 						viewBox="0 0 16 16">
                         <path
 							d="M8 3a5 5 0 1 0 0 10A5 5 0 0 0 8 3zM8 0a.5.5 0 0 1 .5.5V2a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 8 0zm4.546 2.354a.5.5 0 1 1 .708.708l-1.5 1.5a.5.5 0 1 1-.708-.708l1.5-1.5zM16 7.5a.5.5 0 0 1-.5-.5h-1.5a.5.5 0 0 1 0-1H15.5a.5.5 0 0 1 .5.5zm-2.354 6.046a.5.5 0 1 1-.708.708l-1.5-1.5a.5.5 0 1 1 .708-.708l1.5 1.5zM8 14a.5.5 0 0 1 .5.5V16a.5.5 0 0 1-1 0v-1.5A.5.5 0 0 1 8 14zM2.354 13.646a.5.5 0 1 1-.708-.708l1.5-1.5a.5.5 0 1 1 .708.708l-1.5 1.5zM1 7.5a.5.5 0 0 1 .5-.5H3a.5.5 0 0 1 0 1H1.5a.5.5 0 0 1-.5-.5zm2.354-5.146a.5.5 0 1 1 .708-.708l1.5 1.5a.5.5 0 1 1-.708.708l-1.5-1.5z" />
                     </svg>
-				</button>
+				</button> -->
 			</div>
 		</div>
 	</div>
 </nav>
+

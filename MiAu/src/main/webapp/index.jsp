@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -103,7 +105,7 @@
 </style>
 
 
-<title>Home</title>
+
 <title>Encontre Seu Novo AUmigo</title>
 
 </head>
@@ -277,6 +279,16 @@
 	
 
 
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div vw-plugin-container></div>
+    </div>
+</div>
+
+
+	<script defer src="js/apiLibras.js"></script>
+		
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js'></script>
 	<script
@@ -286,7 +298,7 @@
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/home.js"></script>
-	<script type="text/javascript" src="js/theme.js"></script>
+	<!-- <script type="text/javascript" src="js/theme.js"></script> -->
 	<script type="text/javascript" src="js/statistics.js"></script>
 
 

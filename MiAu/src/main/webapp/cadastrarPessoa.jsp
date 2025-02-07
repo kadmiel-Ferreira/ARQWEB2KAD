@@ -14,116 +14,113 @@
 
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <style>
-
-
-
 .form-container {
-    font-family: 'Arial', sans-serif;
-    background-color: #FFF8DC;
-    margin: 0;
-    padding: 0;
-    margin-top: 50px;
+	font-family: 'Arial', sans-serif;
+	background-color: #FFF8DC;
+	margin: 0;
+	padding: 0;
+	margin-top: 50px;
 	margin-bottom: 30px;
 }
 
 .form-container form {
-    background-color: #191970;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid #F4A460;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 900px;
-    min-width: 0;
+	background-color: #191970;
+	padding: 15px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-top: 5px solid #F4A460;
+	border-radius: 10px;
+	width: 100%;
+	max-width: 900px;
+	min-width: 0;
 }
 
 .form-container .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 10px;
 }
 
-.form-container .form-group > div {
-    flex: 1;
-    min-width: 280px; /* Garantindo que os inputs se ajustem */
+.form-container .form-group>div {
+	flex: 1;
+	min-width: 280px; /* Garantindo que os inputs se ajustem */
 }
 
 /* Estilos para os inputs */
-.form-container input[type="text"], .form-container input[type="number"], 
-.form-container input[type="file"], .form-container input[type="email"], 
-.form-container input[type="password"], .form-container select, 
-.form-container textarea {
-    border: 1px solid #ccc;
-    padding: 5px;
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    border-radius: 0;
-    background-color: #333;
-    color: #fff;
-    box-sizing: border-box;
+.form-container input[type="text"], .form-container input[type="number"],
+	.form-container input[type="file"], .form-container input[type="email"],
+	.form-container input[type="password"], .form-container select,
+	.form-container textarea {
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 16px;
+	transition: border-color 0.3s ease;
+	border-radius: 0;
+	background-color: #333;
+	color: #fff;
+	box-sizing: border-box;
 }
 
 .form-container h1, .form-container h2 {
-    color: #F4A460;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: bold;
+	color: #F4A460;
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 10px;
+	font-weight: bold;
 }
 
 .form-container button[type="submit"] {
-    background-color: #F4A460;
-    font-weight: bold;
-    color: white;
-    border: none;
-    padding: 7px 15px;
-    font-size: 18px;
-    cursor: pointer;
-    width: 40%;
-    margin-top: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+	background-color: #F4A460;
+	font-weight: bold;
+	color: white;
+	border: none;
+	padding: 7px 15px;
+	font-size: 18px;
+	cursor: pointer;
+	width: 40%;
+	margin-top: 5px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .form-container button[type="submit"]:hover {
-    background-color: #FF7F50;
+	background-color: #FF7F50;
 }
 
 .form-container label {
-    font-weight: bold;
-    color: #DCDCDC;
+	font-weight: bold;
+	color: #DCDCDC;
 }
 
 .form-container .mb-2 {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .form-container {
-        margin-top: 20px;
-    }
-    .form-container form {
-        padding: 25px;
-        width: 95%;
-        min-width: 0;
-    }
-    .form-container h1 {
-        font-size: 24px;
-    }
-    .form-container button[type="submit"] {
-        padding: 12px 25px;
-    }
-    .form-container .form-group {
-        flex-direction: column; /* Alinha os campos de entrada na vertical em telas pequenas */
-        gap: 15px;
-    }
+@media ( max-width : 768px) {
+	.form-container {
+		margin-top: 20px;
+	}
+	.form-container form {
+		padding: 25px;
+		width: 95%;
+		min-width: 0;
+	}
+	.form-container h1 {
+		font-size: 24px;
+	}
+	.form-container button[type="submit"] {
+		padding: 12px 25px;
+	}
+	.form-container .form-group {
+		flex-direction: column;
+		/* Alinha os campos de entrada na vertical em telas pequenas */
+		gap: 15px;
+	}
 }
-
 </style>
 
 
@@ -219,7 +216,7 @@
 				<div class="form-group">
 					<div>
 						<label for="telefone">Telefone</label> <input type="text"
-							name="telefone" id="telefone" class="form-control" required
+							name="telefone" id="telefone" class="form-control" maxlength="11" required
 							value="${not empty sessionScope.user ? sessionScope.user.telefone : ''}">
 
 					</div>
@@ -227,7 +224,7 @@
 
 						<div id="cpfDiv" style="display: none;">
 							<label for="cpf">CPF</label> <input type="text" name="cpf"
-								id="cpf" class="form-control" value="${sessionScope.user.cpf}">
+								id="cpf" class="form-control" maxlength="11" value="${sessionScope.user.cpf}">
 
 							<span id="cpfErro" class="text-danger"></span>
 						</div>
@@ -237,91 +234,104 @@
 
 						<div id="cnpjDiv" style="display: none;">
 							<label for="cnpj">CNPJ</label> <input type="text" name="cnpj"
-								id="cnpj" class="form-control" value="${sessionScope.user.cnpj}">
+								id="cnpj" class="form-control" maxlength="11" value="${sessionScope.user.cnpj}">
 						</div>
 					</c:if>
 					<c:if test="${empty sessionScope.user}">
 						<div id="cpfDiv" style="display: block;">
 							<label for="cpf">CPF</label> <input type="text" name="cpf"
-								id="cpf" class="form-control" placeholder="Digite seu CPF">
+								id="cpf" class="form-control" maxlength="11" placeholder="Digite seu CPF">
 
 							<span id="cpfErro" class="text-danger"></span>
 						</div>
 
 						<div id="cnpjDiv" style="display: none;">
 							<label for="cnpj">CNPJ</label> <input type="text" name="cnpj"
-								id="cnpj" class="form-control" placeholder="Digite seu CNPJ">
+								id="cnpj" class="form-control" maxlength="11" placeholder="Digite seu CNPJ">
 						</div>
 					</c:if>
-					</div>
+				</div>
 
 
-						<fieldset>
-							<h2 class="text-center">Endereço</h2>
+				<fieldset>
+					<h2 class="text-center">Endereço</h2>
 
-							<div class="form-group">
-								<div>
-									<label for="cep">CEP:</label> <input type="text"
-										class="form-control" id="cep" name="cep" required
-										value="${not empty sessionScope.user ? sessionScope.user.cep : ''}">
-								</div>
-
-								<div>
-									<label for="numero">Número:</label> <input type="text"
-										class="form-control" id="numero" name="numero" required
-										value="${not empty sessionScope.user ? sessionScope.user.numero : ''}">
-								</div>
-							</div>
-							<div class="form-group">
-								<div>
-									<label for="logradouro">Rua:</label> <input type="text"
-										id="logradouro" class="form-control" name="logradouro"
-										required
-										value="${not empty sessionScope.user ? sessionScope.user.logradouro : ''}">
-								</div>
-
-								<div>
-									<label for="complemento">Complemento:</label> <input
-										type="text" class="form-control" id="complemento"
-										name="complemento" required
-										value="${not empty sessionScope.user ? sessionScope.user.complemento : ''}">
-								</div>
-							</div>
-							<div class="form-group">
-								<div>
-									<label for="bairro">Bairro:</label> <input type="text"
-										class="form-control" id="bairro" name="bairro" required
-										value="${not empty sessionScope.user ? sessionScope.user.bairro : ''}">
-								</div>
-
-								<div>
-									<label for="cidade">Cidade:</label> <input type="text"
-										class="form-control" id="cidade" name="cidade" required
-										value="${not empty sessionScope.user ? sessionScope.user.cidade : ''}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="estado">Estado:</label> <input type="text"
-									class="form-control" id="estado" name="estado" maxlength="2"
-									required
-									value="${not empty sessionScope.user ? sessionScope.user.estado : ''}">
-							</div>
-						</fieldset>
-
-						<div class="mb-2">
-							<button type="submit" name="action" value="AdicionarPessoa"
-								class="btn btn-primary">Salvar</button>
+					<div class="form-group">
+						<div>
+							<label for="cep">CEP:</label> <input type="text"
+								class="form-control" id="cep" name="cep" required
+								value="${not empty sessionScope.user ? sessionScope.user.cep : ''}">
 						</div>
+
+						<div>
+							<label for="numero">Número:</label> <input type="text"
+								class="form-control" id="numero" name="numero" required
+								value="${not empty sessionScope.user ? sessionScope.user.numero : ''}">
+						</div>
+					</div>
+					<div class="form-group">
+						<div>
+							<label for="logradouro">Rua:</label> <input type="text"
+								id="logradouro" class="form-control" name="logradouro" required
+								value="${not empty sessionScope.user ? sessionScope.user.logradouro : ''}">
+						</div>
+
+						<div>
+							<label for="complemento">Complemento:</label> <input type="text"
+								class="form-control" id="complemento" name="complemento"
+								required
+								value="${not empty sessionScope.user ? sessionScope.user.complemento : ''}">
+						</div>
+					</div>
+					<div class="form-group">
+						<div>
+							<label for="bairro">Bairro:</label> <input type="text"
+								class="form-control" id="bairro" name="bairro" required
+								value="${not empty sessionScope.user ? sessionScope.user.bairro : ''}">
+						</div>
+
+						<div>
+							<label for="cidade">Cidade:</label> <input type="text"
+								class="form-control" id="cidade" name="cidade" required
+								value="${not empty sessionScope.user ? sessionScope.user.cidade : ''}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="estado">Estado:</label> <input type="text"
+							class="form-control" id="estado" name="estado" maxlength="2"
+							required
+							value="${not empty sessionScope.user ? sessionScope.user.estado : ''}">
+					</div>
+				</fieldset>
+
+				<div class="mb-2">
+					<button type="submit" name="action" value="AdicionarPessoa"
+						class="btn btn-primary">Salvar</button>
+				</div>
 			</form>
 		</div>
 	</div>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.20/inputmask.min.js"></script>
 
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div vw-plugin-container></div>
+    </div>
+</div>
+
+
+	<script defer src="js/apiLibras.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.26/inputmask.min.js"></script>
+
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="js/theme.js"></script>
+	<!-- <script type="text/javascript" src="js/theme.js"></script> -->
 	<script type="text/javascript" src="js/buscaCep.js"></script>
 	<script type="text/javascript" src="js/cookies.js"></script>
 	<script type="text/javascript" src="js/mostrarSenha.js"></script>

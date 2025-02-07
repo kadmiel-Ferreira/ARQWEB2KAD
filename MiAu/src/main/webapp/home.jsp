@@ -53,30 +53,28 @@ select {
 	font-weight: bold !important;
 	border-radius: 8px;
 	padding: 8px;
-  	appearance: none; /* Remove o estilo padrão */
-  	cursor: pointer;
+	appearance: none; /* Remove o estilo padrão */
+	cursor: pointer;
 }
 
 select:focus {
 	outline: none !important;
 	box-shadow: none !important;
-}/* Estilizando as opções */
-
-
+} /* Estilizando as opções */
 select option {
-  background-color: #F4A460; /* Mantém o fundo escuro */
-  color: white; /* Deixa o texto branco */
-  font-weight: bold; /* Texto em negrito */
+	background-color: #F4A460; /* Mantém o fundo escuro */
+	color: white; /* Deixa o texto branco */
+	font-weight: bold; /* Texto em negrito */
 }
 
 /* Estilizando o hover das opções */
 select option:hover {
-  background-color: #d35400 !important; /* Laranja mais escuro */
+	background-color: #d35400 !important; /* Laranja mais escuro */
 }
 
 /* Removendo o azul padrão no hover */
 select option:focus {
-  outline: none !important;
+	outline: none !important;
 }
 
 .animal-card {
@@ -110,22 +108,17 @@ select option:focus {
 	border: 2px solid #FF7F50;
 }
 
-.btn-light{
+.btn-light {
 	background-color: #F4A460;
 	border: 2px solid #FF7F50;
 	color: white;
 	font-weight: bold;
 }
 
-.btn-light:hover{
+.btn-light:hover {
 	background-color: #FF7F50;
 	border: 2px solid #FF7F50;
 }
-
-
-
-
-
 </style>
 
 <body>
@@ -149,11 +142,11 @@ select option:focus {
 					<c:choose>
 						<c:when test="${empty sessionScope.user}">
 							<button type="button" class="btn btn-light w-100"
-							data-bs-toggle="modal" data-bs-target="#exampleModal">Filtrar</button>
+								data-bs-toggle="modal" data-bs-target="#exampleModal">Filtrar</button>
 						</c:when>
 						<c:when test="${!empty sessionScope.user}">
 							<button type="submit" class="btn btn-light w-100" name="action"
-							value="searchEspecies">Filtrar</button>
+								value="searchEspecies">Filtrar</button>
 						</c:when>
 					</c:choose>
 				</div>
@@ -186,8 +179,7 @@ select option:focus {
 							style="border-radius: 15px; overflow: hidden;">
 
 							<!-- Cabeçalho do Modal -->
-							<div class="modal-header"
-								style="background-color: #F4A460 ;">
+							<div class="modal-header" style="background-color: #F4A460;">
 								<h5 class="modal-title fw-bold" id="modalLabel-${animal.id}">${animal.nome}
 									🐾</h5>
 								<button type="button" class="btn-close btn-close-white"
@@ -213,7 +205,7 @@ select option:focus {
 									<div class="col-md-7">
 										<div class="info-animal">
 											<p>
-												<i class="fas fa-note"></i> <strong>Descrição:</strong>
+												<i class="bi bi-pencil-square"></i> <strong>Descrição:</strong>
 												${animal.descricao}
 											</p>
 											<p>
@@ -256,10 +248,9 @@ select option:focus {
 									data-bs-dismiss="modal">Fechar</button>
 								<c:choose>
 									<c:when test="${empty sessionScope.user}">
-										<button
-											type="button" data-bs-dismiss="modal"
-											class="btn btn-success shadow-lg px-4"> <i
-											class="fab fa-whatsapp"></i> Faça Login para Adotar
+										<button type="button" data-bs-dismiss="modal"
+											class="btn btn-success shadow-lg px-4">
+											<i class="fab fa-whatsapp"></i> Faça Login para Adotar
 										</button>
 									</c:when>
 									<c:when test="${animal.sexo == 'FEMEA'}">
@@ -276,7 +267,7 @@ select option:focus {
 											class="fab fa-whatsapp"></i> Quero Adotar o ${animal.nome}
 										</a>
 									</c:when>
-									
+
 								</c:choose>
 							</div>
 
@@ -297,7 +288,16 @@ select option:focus {
 		</c:if>
 	</div>
 
-	
+	<div vw class="enabled">
+		<div vw-access-button class="active"></div>
+		<div vw-plugin-wrapper>
+			<div vw-plugin-container></div>
+		</div>
+	</div>
+
+
+	<script defer src="js/apiLibras.js"></script>
+
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js'></script>
 	<script
@@ -307,9 +307,9 @@ select option:focus {
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/home.js"></script>
-	<script type="text/javascript" src="js/theme.js"></script>
-		
-		
-		
+	<!-- <script type="text/javascript" src="js/theme.js"></script> -->
+
+
+
 </body>
 </html>
