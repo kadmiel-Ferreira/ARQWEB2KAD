@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="js/CachorroOuGato.js" defer></script>
-<!-- Bootstrap CSS -->
+<link rel="icon" href="uploads/paw-solid.svg" type="image/x-icon">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"

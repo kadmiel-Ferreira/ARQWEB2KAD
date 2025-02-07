@@ -10,7 +10,7 @@
 		<c:when test="${not empty sessionScope.user}">Editar Usuário</c:when>
 		<c:otherwise>Cadastre-se</c:otherwise>
 	</c:choose></title>
-
+<link rel="icon" href="uploads/paw-solid.svg" type="image/x-icon">
 
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <style>
@@ -216,7 +216,8 @@
 				<div class="form-group">
 					<div>
 						<label for="telefone">Telefone</label> <input type="text"
-							name="telefone" id="telefone" class="form-control" maxlength="11" required
+							name="telefone" id="telefone" class="form-control" maxlength="11"
+							required
 							value="${not empty sessionScope.user ? sessionScope.user.telefone : ''}">
 
 					</div>
@@ -224,9 +225,9 @@
 
 						<div id="cpfDiv" style="display: none;">
 							<label for="cpf">CPF</label> <input type="text" name="cpf"
-								id="cpf" class="form-control" maxlength="11" value="${sessionScope.user.cpf}">
-
-							<span id="cpfErro" class="text-danger"></span>
+								id="cpf" class="form-control" maxlength="11"
+								value="${sessionScope.user.cpf}"> <span id="cpfErro"
+								class="text-danger"></span>
 						</div>
 					</c:if>
 
@@ -234,20 +235,22 @@
 
 						<div id="cnpjDiv" style="display: none;">
 							<label for="cnpj">CNPJ</label> <input type="text" name="cnpj"
-								id="cnpj" class="form-control" maxlength="11" value="${sessionScope.user.cnpj}">
+								id="cnpj" class="form-control" maxlength="11"
+								value="${sessionScope.user.cnpj}">
 						</div>
 					</c:if>
 					<c:if test="${empty sessionScope.user}">
 						<div id="cpfDiv" style="display: block;">
 							<label for="cpf">CPF</label> <input type="text" name="cpf"
-								id="cpf" class="form-control" maxlength="11" placeholder="Digite seu CPF">
-
-							<span id="cpfErro" class="text-danger"></span>
+								id="cpf" class="form-control" maxlength="11"
+								placeholder="Digite seu CPF"> <span id="cpfErro"
+								class="text-danger"></span>
 						</div>
 
 						<div id="cnpjDiv" style="display: none;">
 							<label for="cnpj">CNPJ</label> <input type="text" name="cnpj"
-								id="cnpj" class="form-control" maxlength="11" placeholder="Digite seu CNPJ">
+								id="cnpj" class="form-control" maxlength="11"
+								placeholder="Digite seu CNPJ">
 						</div>
 					</c:if>
 				</div>
@@ -315,18 +318,19 @@
 
 
 
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-        <div vw-plugin-container></div>
-    </div>
-</div>
+	<div vw class="enabled">
+		<div vw-access-button class="active"></div>
+		<div vw-plugin-wrapper>
+			<div vw-plugin-container></div>
+		</div>
+	</div>
 
 
 	<script defer src="js/apiLibras.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.26/inputmask.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.26/inputmask.min.js"></script>
 
 
 	<script

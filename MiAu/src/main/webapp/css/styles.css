@@ -275,3 +275,16 @@ body {
     transition: color 0.3s;
     color: #F4A460;
 }
+
+
+/* 
+ .favicon {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 32px;  Tamanho do ícone
+        color: white;
+        background-color: #333;  Cor de fundo
+        padding: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    } */
