@@ -32,5 +32,5 @@ O banco de dados foi implementado utilizando **Oracle** e conta com **procedimen
    - Configure a conexão do banco de dados no **DAO**.
 
 3. **▶️ Rodar o Projeto:**
-   - Inicie o servidor e acesse a aplicação pelo navegador.
+   - Inicie o servidor e acesse a aplicação pelo navegador
 
